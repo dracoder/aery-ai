@@ -23,7 +23,7 @@
     "build:lair": "cd lair && npm run build && cd .. && node scripts/copy-lair.mjs"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.11.4",
+    "@tauri-apps/cli": "^2.11.5",
     "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^20.11.0",
     "esbuild": "^0.24.0",
