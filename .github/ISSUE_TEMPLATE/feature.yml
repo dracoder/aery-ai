@@ -1,0 +1,15 @@
+name: Idea
+description: Something Aeryx should do
+labels: [idea]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What you want to do, and why
+    validations:
+      required: true
+  - type: textarea
+    id: chain
+    attributes:
+      label: How should the Chain treat it?
+      description: Which risk class, and what should ask first?

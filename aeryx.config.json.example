@@ -1,0 +1,193 @@
+{
+  "ttsVoice": "en-US-AvaNeural",
+  "ttsEnabled": true,
+  "helloClass3": true,
+  "voice": {
+    "wakePhrase": [
+      "aeryx"
+    ],
+    "micDevice": -1,
+    "micGain": 1
+  },
+  "brain": {
+    "runAs": "self",
+    "account": "aeryx-brain",
+    "workspace": "",
+    "resumeSession": true,
+    "wakeOnBoot": true
+  },
+  "remote": {
+    "enabled": false,
+    "bind": "127.0.0.1",
+    "hostNames": [],
+    "port80": false
+  },
+  "news": {
+    "feeds": [
+      {
+        "name": "BBC World",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+      },
+      {
+        "name": "NPR",
+        "category": "global",
+        "url": "https://feeds.npr.org/1001/rss.xml",
+        "region": "NA",
+        "sub": "us"
+      },
+      {
+        "name": "CBC",
+        "category": "global",
+        "url": "https://www.cbc.ca/webfeed/rss/rss-topstories",
+        "region": "NA",
+        "sub": "ca"
+      },
+      {
+        "name": "BBC US & Canada",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+        "region": "NA"
+      },
+      {
+        "name": "BBC Latin America",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
+        "region": "SA"
+      },
+      {
+        "name": "BBC Europe",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+        "region": "EU"
+      },
+      {
+        "name": "DW",
+        "category": "global",
+        "url": "https://rss.dw.com/rdf/rss-en-eu",
+        "region": "EU"
+      },
+      {
+        "name": "The Moscow Times",
+        "category": "global",
+        "url": "https://www.themoscowtimes.com/rss/news",
+        "region": "AS",
+        "sub": "ru"
+      },
+      {
+        "name": "SCMP China",
+        "category": "global",
+        "url": "https://www.scmp.com/rss/4/feed",
+        "region": "AS",
+        "sub": "cn"
+      },
+      {
+        "name": "The Japan Times",
+        "category": "global",
+        "url": "https://www.japantimes.co.jp/feed/",
+        "region": "AS",
+        "sub": "jp"
+      },
+      {
+        "name": "BBC Asia",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml",
+        "region": "AS"
+      },
+      {
+        "name": "BBC Middle East",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+        "region": "AS"
+      },
+      {
+        "name": "BBC Africa",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml",
+        "region": "AF"
+      },
+      {
+        "name": "BBC Australia",
+        "category": "global",
+        "url": "https://feeds.bbci.co.uk/news/world/australia/rss.xml",
+        "region": "OC"
+      },
+      {
+        "name": "The Guardian",
+        "category": "global",
+        "url": "https://www.theguardian.com/world/rss"
+      },
+      {
+        "name": "Al Jazeera",
+        "category": "global",
+        "url": "https://www.aljazeera.com/xml/rss/all.xml"
+      },
+      {
+        "name": "France 24",
+        "category": "global",
+        "url": "https://www.france24.com/en/rss"
+      },
+      {
+        "name": "CNA",
+        "category": "global",
+        "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml",
+        "region": "AS",
+        "sub": "sg"
+      },
+      {
+        "name": "The National",
+        "category": "global",
+        "url": "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml",
+        "region": "AS",
+        "sub": "ae"
+      },
+      {
+        "name": "ABC News AU",
+        "category": "global",
+        "url": "https://www.abc.net.au/news/feed/51120/rss.xml",
+        "region": "OC",
+        "sub": "au"
+      },
+      {
+        "name": "RNZ Pacific",
+        "category": "global",
+        "url": "https://www.rnz.co.nz/rss/pacific.xml",
+        "region": "OC"
+      },
+      {
+        "name": "MercoPress",
+        "category": "global",
+        "url": "https://en.mercopress.com/rss/",
+        "region": "SA"
+      },
+      {
+        "name": "Punch Nigeria",
+        "category": "global",
+        "url": "https://punchng.com/feed/",
+        "region": "AF",
+        "sub": "ng"
+      },
+      {
+        "name": "Your national outlet",
+        "category": "national",
+        "url": "https://example.com/national/rss.xml"
+      },
+      {
+        "name": "Ars Technica",
+        "category": "tech",
+        "url": "https://feeds.arstechnica.com/arstechnica/index"
+      },
+      {
+        "name": "Hacker News",
+        "category": "tech",
+        "url": "https://news.ycombinator.com/rss"
+      },
+      {
+        "name": "The Verge AI",
+        "category": "ai",
+        "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+      }
+    ]
+  },
+  "mcpServers": {}
+}

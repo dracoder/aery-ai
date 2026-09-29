@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-persona="aeryx">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aeryx — an AI dragon that lives on your machine</title>
+<meta name="description" content="Aeryx is an open-source AI assistant with a live 3D dragon body, as Aeryx or Aeri. It runs on a local or cloud model, keeps its own memory on your disk, and anything that matters waits for your yes.">
+<meta name="theme-color" content="#04070f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aeryx — I built an AI dragon">
+<meta property="og:description" content="Open source. A local-first AI assistant with a 3D dragon body, its own memory, and a chain it can never break.">
+<meta property="og:image" content="https://dracoder.github.io/aeryx/assets/og.jpg">
+<meta property="og:url" content="https://dracoder.github.io/aeryx/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/orbitron-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>try { const p = localStorage.getItem('aeryx.site.persona'); if (p === 'aeri' || p === 'aeryx') document.documentElement.dataset.persona = p; } catch {}</script>
+</head>
+<body>
+<canvas class="embers" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <a class="brand" href="#top"><img src="assets/mark.svg" alt="" width="34" height="34"><span data-name>AERYX</span></a>
+  <div class="links">
+    <a href="#features">Features</a>
+    <a href="#chain">The Chain</a>
+    <a href="#models">Models</a>
+    <a href="#run">Install</a>
+  </div>
+  <a class="star" href="https://github.com/dracoder/aeryx"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.5 7.5 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2Z"/></svg>Star on GitHub</a>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-copy reveal">
+      <p class="kicker">OPEN SOURCE · LOCAL FIRST · AGPL-3.0</p>
+      <h1><em>I built an</em><br><span class="glow">AI DRAGON.</span></h1>
+      <p class="lede">Aeryx is an AI assistant with a live 3D body. It runs on the model you choose, local or cloud, keeps its own memory on your disk, and <b>anything that matters waits for your yes.</b></p>
+      <div class="switch" role="group" aria-label="Choose a dragon">
+        <button type="button" data-pick="aeryx" aria-pressed="true"><i></i>AERYX</button>
+        <button type="button" data-pick="aeri" aria-pressed="false"><i></i>AERI</button>
+      </div>
+      <div class="cta">
+        <a class="button" href="#run">Run it</a>
+        <a class="button ghost" href="https://github.com/dracoder/aeryx">View the code</a>
+      </div>
+    </div>
+    <div class="phone reveal" aria-label="Live capture of the app">
+      <video class="hero-video" data-persona-src="assets/hero-{p}.mp4" data-persona-poster="assets/hero-{p}.jpg" src="assets/hero-aeryx.mp4" poster="assets/hero-aeryx.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+      <span class="phone-tag" data-tag>AE-01 // AERYX</span>
+    </div>
+  </section>
+
+  <section class="pair" id="meet">
+    <header class="section-head reveal"><p class="kicker">ONE MIND · TWO DRAGONS</p><h2><em>Meet</em> <span class="glow">THE PAIR.</span></h2><p>Same brain, same memory, same chain. Pick a dragon and the whole app changes colour with it. Each has three forms: a core, a dragon and a humanoid.</p></header>
+    <div class="pair-grid">
+      <article class="being reveal" data-being="aeryx">
+        <div class="forms"><img src="assets/aeryx-dragon.webp" alt="Aeryx as a dragon: blue and chrome armour over a night city" loading="lazy"><img src="assets/aeryx-core.webp" alt="The Aeryx core: an armoured orb with a blue dragon eye" loading="lazy"><img src="assets/aeryx-human.webp" alt="Aeryx as a masked knight in blue armour, waving" loading="lazy"></div>
+        <div class="being-copy"><h3>AERYX</h3><p><em>Midnight titanium, a cyan core.</em> The original. Tap the core and he tears out of it.</p></div>
+      </article>
+      <article class="being reveal" data-being="aeri">
+        <div class="forms"><img src="assets/aeri-dragon.webp" alt="Aeri as a dragon: crimson and chrome armour over a night city" loading="lazy"><img src="assets/aeri-core.webp" alt="The Aeri core: an armoured orb with an amber dragon eye" loading="lazy"><img src="assets/aeri-human.webp" alt="Aeri as a masked figure in crimson armour, waving" loading="lazy"></div>
+        <div class="being-copy"><h3>AERI</h3><p><em>Crimson armour, an amber core.</em> Switch to her and every screen turns red.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <header class="section-head reveal"><p class="kicker">WHAT IT DOES</p><h2><em>An assistant with</em> <span class="glow">A BODY.</span></h2></header>
+    <div class="feature-grid">
+      <article class="feature reveal"><video data-src="assets/f-plan.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>It plans</em> <span>my day.</span></h3><p>Tell it what's on and it lays out the day, in plain language.</p></div></article>
+      <article class="feature reveal"><video data-src="assets/f-tasks.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>It runs</em> <span>my tasks.</span></h3><p>Ask for something recurring and it proposes a workflow: a schedule, a purpose, and nothing armed yet.</p></div></article>
+      <article class="feature reveal"><video data-src="assets/f-yes.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>Nothing runs until I say</em> <span>yes.</span></h3><p>Proposals wait in the Chain. Press and hold to approve; reject and nothing happened.</p></div></article>
+      <article class="feature reveal"><video data-src="assets/f-world.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>It reads</em> <span>the world.</span></h3><p>Headlines from public feeds, mapped on a globe you can spin, filtered by region.</p></div></article>
+      <article class="feature reveal"><video data-src="assets/f-memory.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>It</em> <span>remembers</span> <em>me.</em></h3><p>Its memory is plain files on your disk. Read it, edit it, delete it. Nothing hidden.</p></div></article>
+      <article class="feature reveal"><video data-src="assets/f-skins.mp4" muted loop playsinline aria-hidden="true"></video><div><h3><em>Two skins,</em> <span>one app.</span></h3><p>Tap Aeryx or Aeri and the theme, the character and every label follow. Add more with skin packs.</p></div></article>
+    </div>
+  </section>
+
+  <section class="chain" id="chain">
+    <header class="section-head reveal"><p class="kicker">THE SAFETY LAYER</p><h2><em>Behind a chain it</em> <span class="glow">CAN NEVER BREAK.</span></h2><p>Every tool call is classified before it runs and written to a hash-linked, append-only log. Standing permissions are replayed from that log, so a broken chain voids every grant.</p></header>
+    <ol class="ladder">
+      <li class="reveal"><b>0</b><h3>Reads</h3><p>Looking is free.</p></li>
+      <li class="reveal"><b>1</b><h3>Ordinary work</h3><p>Inside your workspace, it just gets on with it.</p></li>
+      <li class="reveal"><b>2</b><h3>Asks first</h3><p>Anything outward, destructive or outside your folders.</p></li>
+      <li class="reveal"><b>3</b><h3>Second check</h3><p>Changing Aeryx himself needs more than a click.</p></li>
+    </ol>
+  </section>
+
+  <section class="models" id="models">
+    <header class="section-head reveal"><p class="kicker">YOUR BRAIN, YOUR CHOICE</p><h2><em>Local or</em> <span class="glow">CLOUD.</span></h2></header>
+    <div class="model-grid">
+      <div class="model reveal"><h3>Local</h3><p>An Ollama model on your machine. Your asks never leave it.</p></div>
+      <div class="model reveal"><h3>Claude</h3><p>Your Claude Code login or an Anthropic key. The reference path.</p></div>
+      <div class="model reveal"><h3>OpenRouter</h3><p>One key, many models, over an Anthropic-compatible endpoint.</p></div>
+      <div class="model reveal"><h3>Codex <small>experimental</small></h3><p>OpenAI's Codex models, over OpenRouter.</p></div>
+    </div>
+    <p class="fine reveal">Keys live in the macOS Keychain, Windows DPAPI, or a 0600 file on Linux. Never in the config. No telemetry, no account.</p>
+  </section>
+
+  <section class="soon" id="soon">
+    <header class="section-head reveal"><p class="kicker">IN PROGRESS</p><h2><em>Still</em> <span class="glow">GROWING.</span></h2><p>These exist and are being hardened. They'll ship in a later release.</p></header>
+    <div class="model-grid soon-grid">
+      <div class="model reveal"><h3>Advanced reflexes</h3><p>A faster brain layer that answers the obvious instantly and gets quicker the more you use it.</p></div>
+      <div class="model reveal"><h3>Self-growth</h3><p>Proposing changes to itself and learning new skills, landed only on your approval.</p></div>
+      <div class="model reveal"><h3>Talons</h3><p>Hands on the screen: see, point, click and type, every act shown first.</p></div>
+    </div>
+  </section>
+
+  <section class="run" id="run">
+    <header class="section-head reveal"><p class="kicker">ONE LINE</p><h2><em>Summon</em> <span class="glow">YOURS.</span></h2><p>It brings its own Node, needs no admin rights, and removes cleanly with <code>aeryx uninstall</code>. It opens at <code>http://127.0.0.1:23799/lair/</code>; connect a model and you're in.</p></header>
+    <div class="installs reveal">
+      <div class="downloads">
+        <a class="button dl" href="https://github.com/dracoder/aeryx/releases/latest/download/Aeryx-macos-universal.dmg"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2ZM14 5.4c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5Z"/></svg>Download for Mac</a>
+        <a class="button dl" href="https://github.com/dracoder/aeryx/releases/latest/download/Aeryx-windows-x64-setup.exe"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.4 4.5v7H3v-6Zm0 13 7.4 1v-7H3v6Zm8.4 1.2L21 21v-8.5h-9.6v7.2Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg>Download for Windows</a>
+      </div>
+      <p class="fine dl-note">Same Aeryx, no terminal: a window, a tray and a floating orb. Not code-signed yet, so the first launch shows an "unverified developer" warning; <a href="https://github.com/dracoder/aeryx/blob/main/docs/DESKTOP.md">here's how to open it</a>. Or, for developers:</p>
+      <h3>macOS / Linux</h3>
+<pre><code>curl -fsSL https://dracoder.github.io/aeryx/install.sh | sh</code></pre>
+      <h3>Windows (PowerShell)</h3>
+<pre><code>irm https://dracoder.github.io/aeryx/install.ps1 | iex</code></pre>
+      <p class="fine">Voice is Windows-only for now. <a href="https://github.com/dracoder/aeryx/blob/main/site/install.sh">Read the installer</a> first if you like. Something wrong? <a href="https://github.com/dracoder/aeryx/issues/new?template=bug.yml">Report a bug</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <img src="assets/mark.svg" alt="" width="40" height="40">
+    <p class="sig" data-name>AERYX</p>
+    <p class="still"><em>still building</em></p>
+    <p class="fine">Code under AGPL-3.0. The name, the dragon mark and the 3D characters are reserved; the characters were generated with Meshy. Clips are live captures of the app with test data and real model replies. <a href="privacy.html">Privacy</a> · <a href="https://github.com/dracoder/aeryx">GitHub</a></p>
+  </footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

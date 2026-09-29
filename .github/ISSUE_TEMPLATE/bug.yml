@@ -1,0 +1,44 @@
+name: Bug
+description: Something Aeryx does wrong
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Tip: `aeryx report` (or **report a bug** in the Lair) writes a diagnostics file with keys and paths masked. Read it, then drop it in the last box."
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did it happen?
+      options:
+        - Web version (browser)
+        - Desktop app (beta)
+        - Installer or the aeryx command
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Version, OS and model provider
+      placeholder: "v0.1.0 · win32 10.0.x x64 · local qwen3-coder"
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics (optional)
+      description: Drop the file from `aeryx report` here, or paste the parts you are happy to share.
+  - type: markdown
+    attributes:
+      value: "Security issue? Don't file it here. Use Security → Report a vulnerability instead."

@@ -1,0 +1,89 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            rust_targets: aarch64-apple-darwin,x86_64-apple-darwin
+          - os: windows-latest
+            rust_targets: x86_64-pc-windows-msvc
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87
+        with:
+          targets: ${{ matrix.rust_targets }}
+      - run: npm ci
+      - run: npm run gate
+      - run: node scripts/pack-app.mjs
+      - name: build (macOS, universal)
+        if: runner.os == 'macOS'
+        env:
+          COPYFILE_DISABLE: '1'
+        run: |
+          npx tauri build --target universal-apple-darwin --bundles app,dmg
+          b=src-tauri/target/universal-apple-darwin/release/bundle
+          mkdir -p dist-app
+          tar -czf dist-app/Aeryx-macos-universal.app.tar.gz -C "$b/macos" Aeryx.app
+          cp "$b"/dmg/*.dmg dist-app/Aeryx-macos-universal.dmg
+      - name: build (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          npx tauri build --bundles nsis
+          mkdir -p dist-app
+          cp src-tauri/target/release/bundle/nsis/*-setup.exe dist-app/Aeryx-windows-x64-setup.exe
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: app-${{ runner.os }}
+          path: dist-app/*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          path: dist-app
+          merge-multiple: true
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          path: src
+      - name: source archive (what the installers and aeryx update verify and install)
+        run: git -C src archive --format=tar.gz --prefix=aeryx/ -o "$GITHUB_WORKSPACE/dist-app/aeryx-source.tar.gz" HEAD
+      - name: checksums
+        working-directory: dist-app
+        run: sha256sum Aeryx-* aeryx-source.tar.gz > SHA256SUMS
+      - name: sign the checksums (fails without the AERYX_RELEASE_KEY secret, so no unsigned release)
+        env:
+          AERYX_RELEASE_KEY: ${{ secrets.AERYX_RELEASE_KEY }}
+        run: node src/scripts/sign-release.mjs dist-app/SHA256SUMS
+      - name: draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist-app/* --repo "$GITHUB_REPOSITORY" --draft \
+            --title "Aeryx $GITHUB_REF_NAME" \
+            --notes "Desktop app (beta, not code-signed yet; the checksums are signed). The easiest install is the one-line installer with the app option — see docs/DESKTOP.md. Direct downloads show an unsigned-app warning; the same page explains it. SHA256SUMS lists every file's checksum."

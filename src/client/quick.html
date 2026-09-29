@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{var s=localStorage,t=s.getItem('aeryx.theme')||s.getItem('aeryx.persona');if(t==='aeri'||t==='violet')document.documentElement.dataset.persona=t}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Aeryx</title>
+<style id="persona-palette">
+:root {
+  --c-05080f: 5 8 15;
+  --c-50beff: 80 190 255;
+  --c-7fe3ff: 127 227 255;
+  --c-8fb2cc: 143 178 204;
+  --c-eafcff: 234 252 255;
+}
+:root[data-persona="aeri"] {
+  --c-05080f: 12 5 6;
+  --c-50beff: 255 88 80;
+  --c-7fe3ff: 255 148 127;
+  --c-8fb2cc: 206 142 141;
+  --c-eafcff: 250 241 239;
+}
+:root[data-persona="violet"] {
+  --c-05080f: 9 5 12;
+  --c-50beff: 159 80 255;
+  --c-7fe3ff: 175 127 255;
+  --c-8fb2cc: 172 141 206;
+  --c-eafcff: 243 239 250;
+}
+</style>
+<style>
+  @font-face { font-family: "Rajdhani"; font-weight: 500; src: url(./fonts/rajdhani-latin-500.woff2) format("woff2"); }
+  :root { --ink: rgb(var(--c-05080f)); --cyan: rgb(var(--c-7fe3ff)); --ice: rgb(var(--c-eafcff)); --muted: rgb(var(--c-8fb2cc)); }
+  html, body { margin: 0; height: 100%; background: var(--ink); color: var(--ice); overflow: hidden; }
+  form { height: 100%; display: flex; align-items: center; gap: 12px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgb(var(--c-7fe3ff) / .35); }
+  img { width: 30px; height: 30px; filter: drop-shadow(0 0 8px rgb(var(--c-50beff) / .8)); }
+  input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: var(--ice); font: 500 22px "Rajdhani", system-ui, sans-serif; }
+  input::placeholder { color: var(--muted); }
+  #note { color: var(--cyan); font: 500 14px "Rajdhani", system-ui, sans-serif; white-space: nowrap; max-width: 55%; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<form id="f" autocomplete="off">
+  <img src="./assets/aeryx-mark.svg" alt="">
+  <input id="q" placeholder="Ask Aeryx…  (Enter to send, Esc to close)" aria-label="Ask Aeryx" autofocus>
+  <span id="note" role="status"></span>
+</form>
+<script>
+  const q = document.getElementById('q');
+  const note = document.getElementById('note');
+  const done = () => location.assign('/quick/done');
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') done(); });
+  document.getElementById('f').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = q.value.trim();
+    if (!text) return;
+    q.disabled = true;
+    try {
+      const r = await fetch('/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text }) });
+      if (r.ok) { note.textContent = 'Sent. Aeryx is on it.'; setTimeout(done, 900); return; }
+      const body = await r.json().catch(() => ({}));
+      note.textContent = typeof body.error === 'string' && body.error ? body.error : 'Aeryx is not available right now.';
+    } catch {
+      note.textContent = 'Aeryx is not running.';
+    }
+    note.title = note.textContent;
+    q.disabled = false;
+    q.focus();
+  });
+  q.focus();
+</script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{var s=localStorage,t=s.getItem('aeryx.theme')||s.getItem('aeryx.persona');if(t==='aeri'||t==='violet')document.documentElement.dataset.persona=t}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AERYX</title>
+<link rel="icon" href="/assets/aeryx-mark.svg" type="image/svg+xml">
+<style id="persona-palette">
+:root {
+  --c-01081a: 1 8 26;
+  --c-020918: 2 9 24;
+  --c-030815: 3 8 21;
+  --c-030916: 3 9 22;
+  --c-030a1b: 3 10 27;
+  --c-041026: 4 16 38;
+  --c-050b1b: 5 11 27;
+  --c-051127: 5 17 39;
+  --c-05122b: 5 18 43;
+  --c-06152f: 6 21 47;
+  --c-0b64a8: 11 100 168;
+  --c-0c1a30: 12 26 48;
+  --c-0d1c43: 13 28 67;
+  --c-123e81: 18 62 129;
+  --c-17418e: 23 65 142;
+  --c-1c9fff: 28 159 255;
+  --c-1f93ff: 31 147 255;
+  --c-248dd3: 36 141 211;
+  --c-248fe7: 36 143 231;
+  --c-285283: 40 82 131;
+  --c-3585ff: 53 133 255;
+  --c-383184: 56 49 132;
+  --c-3aadff: 58 173 255;
+  --c-3fbbff: 63 187 255;
+  --c-4fa3e7: 79 163 231;
+  --c-62dcff: 98 220 255;
+  --c-8baac3: 139 170 195;
+  --c-8caac4: 140 170 196;
+  --c-9abbd2: 154 187 210;
+  --c-a9c9df: 169 201 223;
+  --c-afcde1: 175 205 225;
+  --c-bbefff: 187 239 255;
+  --c-cef3ff: 206 243 255;
+  --c-d9f1ff: 217 241 255;
+  --c-dff8ff: 223 248 255;
+  --c-e3f9ff: 227 249 255;
+  --c-e5f3ff: 229 243 255;
+  --c-e8fcff: 232 252 255;
+  --c-edfaff: 237 250 255;
+}
+:root[data-persona="aeri"] {
+  --c-01081a: 21 3 5;
+  --c-020918: 19 4 5;
+  --c-030815: 17 4 6;
+  --c-030916: 18 4 6;
+  --c-030a1b: 22 5 7;
+  --c-041026: 30 7 9;
+  --c-050b1b: 22 6 8;
+  --c-051127: 31 7 10;
+  --c-05122b: 34 8 10;
+  --c-06152f: 38 9 12;
+  --c-0b64a8: 173 8 6;
+  --c-0c1a30: 39 14 16;
+  --c-0d1c43: 54 16 21;
+  --c-123e81: 104 26 32;
+  --c-17418e: 146 19 32;
+  --c-1c9fff: 255 32 28;
+  --c-1f93ff: 255 31 35;
+  --c-248dd3: 216 36 31;
+  --c-248fe7: 237 30 30;
+  --c-285283: 134 37 42;
+  --c-3585ff: 255 53 69;
+  --c-383184: 134 47 67;
+  --c-3aadff: 255 62 58;
+  --c-3fbbff: 255 74 63;
+  --c-4fa3e7: 236 75 74;
+  --c-62dcff: 255 123 98;
+  --c-8baac3: 197 137 137;
+  --c-8caac4: 198 138 139;
+  --c-9abbd2: 212 154 152;
+  --c-a9c9df: 225 169 167;
+  --c-afcde1: 227 175 173;
+  --c-bbefff: 240 208 202;
+  --c-cef3ff: 244 221 217;
+  --c-d9f1ff: 246 227 226;
+  --c-dff8ff: 248 233 230;
+  --c-e3f9ff: 249 236 233;
+  --c-e5f3ff: 249 235 235;
+  --c-e8fcff: 250 240 237;
+  --c-edfaff: 251 242 241;
+}
+:root[data-persona="violet"] {
+  --c-01081a: 13 3 21;
+  --c-020918: 13 4 19;
+  --c-030815: 12 4 17;
+  --c-030916: 12 4 18;
+  --c-030a1b: 15 5 22;
+  --c-041026: 20 7 30;
+  --c-050b1b: 16 6 22;
+  --c-051127: 21 7 31;
+  --c-05122b: 23 8 34;
+  --c-06152f: 25 9 38;
+  --c-0b64a8: 86 6 173;
+  --c-0c1a30: 28 14 39;
+  --c-0d1c43: 39 16 54;
+  --c-123e81: 68 26 104;
+  --c-17418e: 90 19 146;
+  --c-1c9fff: 135 28 255;
+  --c-1f93ff: 142 31 255;
+  --c-248dd3: 116 31 216;
+  --c-248fe7: 130 30 237;
+  --c-285283: 88 37 134;
+  --c-3585ff: 163 53 255;
+  --c-383184: 109 47 134;
+  --c-3aadff: 150 58 255;
+  --c-3fbbff: 148 63 255;
+  --c-4fa3e7: 152 74 236;
+  --c-62dcff: 157 98 255;
+  --c-8baac3: 166 137 197;
+  --c-8caac4: 167 138 198;
+  --c-9abbd2: 180 152 212;
+  --c-a9c9df: 194 167 225;
+  --c-afcde1: 198 173 227;
+  --c-bbefff: 217 202 240;
+  --c-cef3ff: 228 217 244;
+  --c-d9f1ff: 235 226 246;
+  --c-dff8ff: 237 230 248;
+  --c-e3f9ff: 239 233 249;
+  --c-e5f3ff: 242 235 249;
+  --c-e8fcff: 241 237 250;
+  --c-edfaff: 245 241 251;
+}
+</style>
+<style>
+  @font-face { font-family: "Orbitron"; font-weight: 500 900; font-display: swap; src: url(./fonts/orbitron-latin-var.woff2) format("woff2"); }
+  @font-face { font-family: "Rajdhani"; font-weight: 400; font-display: swap; src: url(./fonts/rajdhani-latin-400.woff2) format("woff2"); }
+  @font-face { font-family: "Rajdhani"; font-weight: 600; font-display: swap; src: url(./fonts/rajdhani-latin-600.woff2) format("woff2"); }
+  :root {
+    color-scheme: dark;
+    --void: rgb(var(--c-050b1b)); --scale: rgb(var(--c-0c1a30));
+    --ember-lo: rgb(var(--c-17418e)); --ember-hi: rgb(var(--c-1c9fff));
+    --gold: rgb(var(--c-62dcff)); --heat: rgb(var(--c-e3f9ff)); --ash: rgb(var(--c-8caac4)); --jade: #56f1d6;
+    --panel: rgb(var(--c-051127) / .78); --line: rgb(var(--c-62dcff) / .24);
+    --text: rgb(var(--c-e5f3ff)); --red: #ff6679;
+    --disp: "Orbitron", ui-sans-serif, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="56" height="97"><path d="M28 0l24 14v28L28 56 4 42V14zM28 56l24 14v27H4V70z" fill="none" stroke="%230c1b33" stroke-width="1"/></svg>') repeat,
+      var(--void);
+    color: var(--text);
+    font: 12px/1.5 ui-monospace, 'Cascadia Code', Consolas, monospace;
+  }
+  #embers { position: fixed; inset: 0; z-index: 0; }
+  #core { position: fixed; left: 50%; top: 46%; transform: translate(-50%,-50%); z-index: 1; }
+  #coreState {
+    position: fixed; left: 50%; top: calc(46% + 158px); transform: translateX(-50%);
+    z-index: 2; font-family: var(--disp); font-weight: 600;
+    letter-spacing: .35em; text-transform: uppercase; font-size: 10px; color: var(--gold);
+    text-shadow: 0 0 12px rgb(var(--c-62dcff) / .7);
+  }
+  .panel {
+    position: fixed; z-index: 2; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 6px;
+    backdrop-filter: blur(3px); padding: 10px 12px;
+    box-shadow: 0 0 24px rgba(0,0,0,.5), inset 0 1px 0 rgb(var(--c-62dcff) / .16);
+  }
+  .panel h2 {
+    font-family: var(--disp); font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px; font-weight: 600;
+    border-bottom: 1px solid var(--line); padding-bottom: 5px;
+  }
+  .panel h2::before { content: '◆ '; color: var(--ember-hi); }
+
+  #convo { left: 18px; top: 18px; bottom: 86px; width: 340px; display: flex; flex-direction: column; }
+  #log { flex: 1; overflow-y: auto; display: grid; gap: 5px; align-content: start; scrollbar-width: thin; }
+  .row { padding: 4px 8px; border-left: 2px solid var(--line); word-break: break-word; color: var(--text); }
+  .row.say { border-left-color: var(--gold); }
+  .row.user { border-left-color: var(--jade); color: #cfe6d8; }
+  .row.blocked { border-left-color: var(--red); color: #f0a9a2; }
+  .row.info { border-left-color: rgb(var(--c-285283)); color: rgb(var(--c-8baac3)); font-size: 11px; }
+  .row .t { color: var(--ash); font-size: 9px; margin-right: 6px; }
+
+  #right { position: fixed; z-index: 2; right: 18px; top: 18px; width: 300px; display: grid; gap: 12px; }
+  #right .panel { position: static; }
+  #approvalsPanel { border-color: rgb(var(--c-62dcff) / .4); }
+  #approvalsPanel h2 { color: var(--gold); }
+  .confirm {
+    border: 1px solid rgb(var(--c-62dcff) / .45); background: rgb(var(--c-62dcff) / .06);
+    border-radius: 5px; padding: 8px; display: grid; gap: 7px; margin-bottom: 6px;
+  }
+  .confirm .q { color: var(--heat); font-size: 11px; }
+  .confirm button { padding: 4px 12px; }
+  #statusPanel dl { display: grid; grid-template-columns: 92px 1fr; gap: 3px 10px; }
+  #statusPanel dt { color: var(--ash); } #statusPanel dd { color: var(--text); }
+  .ok { color: var(--jade) !important; } .bad { color: var(--red) !important; } .warn { color: var(--gold) !important; }
+
+  #auditPanel { right: 18px; bottom: 86px; width: 300px; max-height: 260px; overflow: hidden; position: fixed; }
+  #auditRows { font-size: 10px; display: grid; gap: 3px; }
+  #auditRows div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgb(var(--c-8baac3)); }
+  #auditRows .v-denied, #auditRows .v-rejected { color: var(--red); }
+  #auditRows .v-confirmed { color: var(--gold); }
+
+  #askbar {
+    position: fixed; z-index: 3; left: 50%; bottom: 22px; transform: translateX(-50%);
+    width: min(680px, calc(100vw - 40px)); display: flex; gap: 8px;
+  }
+  #askbar input {
+    flex: 1; font: inherit; font-size: 13px; padding: 10px 16px;
+    background: var(--panel); color: rgb(var(--c-edfaff)); outline: none;
+    border: 1px solid var(--line); border-radius: 20px;
+    backdrop-filter: blur(3px);
+  }
+  #askbar input:focus { border-color: var(--gold); box-shadow: 0 0 16px rgb(var(--c-62dcff) / .18); }
+  button {
+    font: inherit; cursor: pointer; border-radius: 16px;
+    background: rgb(var(--c-06152f) / .85); color: var(--gold); border: 1px solid var(--line);
+    padding: 8px 16px;
+  }
+  button:hover { border-color: var(--gold); box-shadow: 0 0 12px rgb(var(--c-62dcff) / .18); }
+  button.yes { color: var(--jade); border-color: rgba(41,193,122,.5); }
+  button.no { color: var(--red); border-color: rgba(255,80,64,.5); }
+  select {
+    font: inherit; padding: 3px 26px 3px 10px; border-radius: 4px; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M1 1l4 4 4-4" fill="none" stroke="%2362dcff" stroke-width="1.5" stroke-linecap="round"/></svg>') no-repeat right 8px center,
+      rgb(var(--c-06152f) / .85);
+    color: var(--text); border: 1px solid var(--line);
+  }
+  select:hover, select:focus { border-color: var(--gold); outline: none; }
+  select option { background: rgb(var(--c-0c1a30)); color: var(--text); }
+
+  body { background: radial-gradient(ellipse at 65% 65%, rgb(var(--c-123e81) / .35), transparent 70%),linear-gradient(rgb(var(--c-020918) / .45),rgb(var(--c-020918) / .45)),url('/assets/aeryx-city-backdrop.webp') center center / cover no-repeat,rgb(var(--c-030815)); font: 14px/1.45 "Rajdhani", system-ui, sans-serif; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: repeating-linear-gradient(90deg, transparent 0 63px, rgb(var(--c-3585ff) / .018) 64px 65px),
+      repeating-linear-gradient(0deg, transparent 0 63px, rgb(var(--c-3585ff) / .012) 64px 65px); }
+  #embers { pointer-events: none; z-index: 2; }
+  #dragonStage { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; background: rgb(var(--c-030916)) url('/assets/aeryx-city-backdrop.webp') center center / cover no-repeat; }
+  #dragonArt, #dragonCanvas { position: absolute; top: 0; right: 0; width: 66%; height: 100%; }
+  #dragonArt { object-fit: contain; transition: opacity .6s ease; }
+  #dragonCanvas { z-index: 1; opacity: 0; transition: opacity .6s ease; pointer-events: auto; cursor: pointer; }
+  #dragonStage.is-live #dragonCanvas { opacity: 1; }
+  #dragonStage.is-live #dragonArt { opacity: 0; }
+  #dragonStage::after { content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, rgb(var(--c-030a1b) / .64), transparent 42%, transparent 72%, rgb(var(--c-030a1b) / .28)), linear-gradient(0deg,rgb(var(--c-030a1b) / .45),transparent 26%); }
+  #masthead { position: fixed; z-index: 5; left: 26px; right: 26px; top: 19px; height: 62px;
+    display: flex; align-items: center; gap: 18px; border-bottom: 1px solid rgb(var(--c-62dcff) / .16); }
+  #masthead .brand { font: 600 21px "Orbitron", sans-serif; letter-spacing: .42em; color: var(--gold); text-shadow: 0 0 24px rgb(var(--c-1f93ff) / .25); }
+  #masthead .tagline { color: rgb(var(--c-afcde1)); letter-spacing: .1em; font-size: 12px; }
+  #masthead nav { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  #masthead nav a, #masthead nav button { padding: 7px 11px; font: 600 12px "Rajdhani", sans-serif;
+    letter-spacing: .12em; text-transform: uppercase; color: rgb(var(--c-d9f1ff)); text-decoration: none;
+    border: 1px solid rgb(var(--c-62dcff) / .2); background: rgb(var(--c-041026) / .65); border-radius: 4px; }
+  #masthead nav a:hover, #masthead nav button:hover { color: var(--heat); border-color: var(--gold); }
+  #styleDock { position: fixed; z-index: 5; left: 28px; top: 99px; padding: 13px 14px 14px; min-width: 240px;
+    border: 1px solid rgb(var(--c-62dcff) / .35); border-radius: 12px; background: linear-gradient(125deg,rgb(var(--c-05122b) / .88),rgb(var(--c-0d1c43) / .7));
+    box-shadow: 0 12px 40px rgba(0,0,0,.32), inset 0 1px rgb(var(--c-bbefff) / .12); backdrop-filter: blur(16px); }
+  #styleDock .kicker { color: var(--ash); font: 600 10px var(--disp); letter-spacing: .23em; text-transform: uppercase; }
+  #styleDock .choice { display: flex; gap: 6px; margin-top: 11px; }
+  #styleDock .choice button { flex: 1; border-radius: 7px; padding: 8px 10px; background: rgb(var(--c-01081a) / .65);
+    color: rgb(var(--c-a9c9df)); font: 600 13px "Rajdhani", sans-serif; letter-spacing: .06em; }
+  #styleDock .choice button[aria-pressed="true"] { color: rgb(var(--c-e8fcff)); background: linear-gradient(135deg,rgb(var(--c-0b64a8) / .56),rgb(var(--c-383184) / .42));
+    border-color: var(--gold); box-shadow: inset 0 0 14px rgb(var(--c-3fbbff) / .17),0 0 18px rgb(var(--c-3aadff) / .18); }
+  #sceneLabel { position: fixed; z-index: 4; right: 30px; bottom: 112px; text-align: right; pointer-events: none;
+    color: rgb(var(--c-cef3ff)); font: 600 11px var(--disp); letter-spacing: .24em; text-transform: uppercase;
+    text-shadow: 0 0 20px rgb(var(--c-248dd3)); }
+  #sceneLabel small { display: block; margin-top: 7px; color: rgb(var(--c-9abbd2)); font: 500 12px "Rajdhani",sans-serif; letter-spacing: .12em; }
+  #core { z-index: 5; left: auto; right: 26px; top: 92px; transform: none; transition: opacity .7s; }
+  #coreState { z-index: 5; left: auto; right: 27px; top: 182px; transform: none; width: 88px;
+    font-size: 8px; letter-spacing: .11em; text-align: center; transition: opacity .7s; }
+  .panel { background: linear-gradient(125deg,rgb(var(--c-4fa3e7) / .14),transparent 30%),rgb(var(--c-041026) / .81); border: 1px solid rgb(var(--c-62dcff) / .32); border-radius: 10px;
+    box-shadow: inset 0 1px rgb(var(--c-dff8ff) / .17),0 16px 42px rgba(0,0,0,.32),0 0 25px rgb(var(--c-248fe7) / .07); backdrop-filter: blur(18px) saturate(1.2); }
+  #convo { top: auto; height: min(36vh, 300px); bottom: 110px; left: 26px; width: min(390px, 32vw); padding: 22px;
+    opacity: 0; transform: translateX(-28px); pointer-events: none; transition: opacity .25s, transform .25s; }
+  body.show-convo #convo { opacity: 1; transform: none; pointer-events: auto; }
+  #convo h2 { font-size: 11px; letter-spacing: .19em; }
+  #log { font: 15px/1.45 "Rajdhani", sans-serif; gap: 12px; }
+  .row { padding: 8px 9px; background: rgba(255,255,255,.018); border-left-width: 1px; border-radius: 0 6px 6px 0; }
+  .row .t { display: block; font-size: 9px; margin-bottom: 3px; }
+  #right { top: 217px; right: 26px; width: min(270px, 22vw); gap: 10px;
+    opacity: 0; transform: translateX(28px); pointer-events: none; transition: opacity .25s, transform .25s; }
+  body.show-systems #right, body.has-approvals #right { opacity: 1; transform: none; pointer-events: auto; }
+  #right .panel { padding: 14px; }
+  #statusPanel dl { grid-template-columns: 60px 1fr; font-size: 12px; }
+  #approvalsPanel { display: none; max-height: 35vh; overflow-y: auto; }
+  body.has-approvals #approvalsPanel, body.show-systems #approvalsPanel { display: block; }
+  #auditPanel { display: none; }
+  #askbar { bottom: 26px; width: min(780px, calc(100vw - 90px)); }
+  #askbar input { font: 500 17px "Rajdhani", sans-serif; border-radius: 10px; padding: 12px 17px;
+    background: rgb(var(--c-041026) / .9); border-color: rgb(var(--c-62dcff) / .28); }
+  #askbar button { border-radius: 10px; font: 600 14px "Rajdhani", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+  #askbar :disabled { opacity: .55; cursor: not-allowed; }
+  @media (max-width: 900px) {
+    #masthead .tagline { display: none; } #masthead { left: 14px; right: 14px; }
+    #convo { width: 54vw; left: 14px; bottom: 92px; top: auto; }
+    #right { right: 14px; width: 36vw; top: 205px; } #core { right: 14px; top: 100px; }
+    #coreState { right: 14px; top: 190px; }
+  }
+  @media (max-width: 620px) {
+    #convo { width: calc(100vw - 28px); top: auto; height: 32vh; bottom: 92px; }
+    #right { display: none; } body.show-systems #right, body.has-approvals #right { display: grid; top: 204px; width: calc(100vw - 28px); }
+    #masthead .brand { font-size: 16px; letter-spacing: .2em; }
+    #masthead nav { gap: 4px; }
+    #masthead nav a { display: none; } #masthead nav button { padding: 6px; font-size: 10px; }
+    #replayCinema { font-size: 0 !important; width: 32px; }
+    #replayCinema::before { content: '↻'; font-size: 16px; }
+    #core { right: 14px; top: 98px; }
+    #coreState { right: 14px; top: 188px; }
+    #askbar { width: calc(100vw - 28px); bottom: 17px; }
+    #styleDock { left: 14px; top: 82px; min-width: 0; padding: 9px; }
+    #styleDock .kicker { display: none; } #styleDock .choice { margin: 0; }
+    #sceneLabel { display: none; }
+    #dragonArt, #dragonCanvas { width: 100%; height: 72%; top: 14%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #replayCinema { display: none; }
+  }
+  :root[data-persona="aeri"] body { background-color: #3a060c; background-blend-mode: normal, normal, luminosity; }
+  :root[data-persona="aeri"] #dragonStage { background-color: #3a060c; background-blend-mode: luminosity; }
+</style>
+</head>
+<body>
+<canvas id="embers"></canvas>
+<div id="dragonStage" aria-hidden="true">
+  <img id="dragonArt" src="./assets/characters/aeryx-dragon.webp" alt="">
+  <canvas id="dragonCanvas"></canvas>
+</div>
+<header id="masthead">
+  <span class="brand">AERYX</span><span class="tagline">THE CYBER DRAGON • YOUR MIND, AMPLIFIED</span>
+  <nav aria-label="Main navigation">
+    <a href="/lair">Lair</a><a href="/lens">Lens</a>
+    <button type="button" id="toggleConvo" aria-expanded="false" aria-controls="convo">Conversation</button>
+    <button type="button" id="toggleSystems" aria-expanded="false" aria-controls="right">Systems</button>
+    <button type="button" id="replayCinema" aria-label="Summon the dragon again, with sound">Summon + sound</button>
+  </nav>
+</header>
+<div id="styleDock" role="group" aria-label="Persona">
+  <div class="kicker">Choose persona</div>
+  <div class="choice"><button type="button" data-dragon-style="aeryx" aria-pressed="true">Aeryx</button><button type="button" data-dragon-style="aeri" aria-pressed="false">Aeri</button></div>
+</div>
+<div id="sceneLabel" aria-live="polite">AERYX<small id="scenePhase">Core awakening</small></div>
+<canvas id="core"></canvas>
+<div id="coreState">offline</div>
+
+<section class="panel" id="convo">
+  <h2>Comm link</h2>
+  <div id="log"></div>
+</section>
+
+<div id="right">
+  <section class="panel" id="statusPanel">
+    <h2>Systems</h2>
+    <dl>
+      <dt>clock</dt><dd id="clock" style="color:var(--heat)">—</dd>
+      <dt>brain</dt><dd id="brain">—</dd>
+      <dt>model</dt><dd id="model">—</dd>
+      <dt>chain</dt><dd id="chain">—</dd>
+      <dt>mic</dt><dd>
+        <select id="micMode">
+          <option value="ptt">push-to-talk</option>
+          <option value="wake">wake word</option>
+          <option value="always">open mic</option>
+          <option value="off">off</option>
+        </select>
+      </dd>
+      <dt>voice out</dt><dd><button id="voiceToggle" style="padding:2px 10px">🔊</button></dd>
+      <dt>listen</dt><dd><button id="pttBtn" style="padding:2px 10px" title="or press F8">🎙 F8</button></dd>
+      <dt>lair</dt><dd><button type="button" style="padding:2px 10px" onclick="location.href='/lair'">🐉 open</button></dd>
+    </dl>
+  </section>
+  <section class="panel" id="approvalsPanel">
+    <h2>The Chain — approvals</h2>
+    <div id="confirms"><span style="color:var(--ash)">nothing pending</span></div>
+  </section>
+</div>
+
+<section class="panel" id="auditPanel">
+  <h2>Operations</h2>
+  <div id="auditRows"></div>
+</section>
+
+<form id="askbar">
+  <input type="text" id="askText" placeholder="Connecting to Aeryx…" autocomplete="off" disabled>
+  <button type="submit" disabled>send</button>
+</form>
+
+<script src="./orb.js"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const post = (p, body) => fetch(p, { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify(body) });
+  const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const stage = $('dragonStage');
+  const PERSONAS = { aeryx: 'Aeryx', aeri: 'Aeri' };
+  let persona = 'aeryx';
+  try { if (localStorage.getItem('aeryx.persona') === 'aeri') persona = 'aeri'; } catch { }
+  let familiar = null;
+  const sounds = {};
+  function cue(name, volume = .5) {
+    try {
+      const audio = sounds[name] ??= new Audio(`./assets/characters/${name}.m4a`);
+      audio.volume = volume; audio.currentTime = 0; audio.play().catch(() => {});
+    } catch { }
+  }
+  function summon(withSound = false) {
+    if (!familiar) return;
+    $('scenePhase').textContent = 'Core awakening';
+    familiar.setForm('core');
+    setTimeout(() => { if (withSound) cue('summon'); familiar?.setForm('dragon'); }, REDUCED ? 0 : 1400);
+  }
+  function setPersona(next) {
+    if (!PERSONAS[next]) return;
+    persona = next;
+    $('dragonArt').src = `./assets/characters/${next}-dragon.webp`;
+    $('sceneLabel').firstChild.textContent = PERSONAS[next].toUpperCase();
+    document.querySelectorAll('[data-dragon-style]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.dragonStyle === next)));
+    AeryxOrb.setVisualStyle(next);
+    try { localStorage.setItem('aeryx.persona', next); } catch { }
+    familiar?.setPersona(next);
+  }
+  document.querySelectorAll('[data-dragon-style]').forEach((button) => button.addEventListener('click', () => setPersona(button.dataset.dragonStyle)));
+  addEventListener('storage', (event) => { if (event.key === 'aeryx.persona' && PERSONAS[event.newValue]) setPersona(event.newValue); });
+  $('replayCinema').onclick = () => summon(true);
+  setPersona(persona);
+  import('./familiar.js').then(({ createFamiliar }) => {
+    familiar = createFamiliar($('dragonCanvas'), {
+      assetBase: './assets/characters/', persona, form: 'core',
+      onState: (s) => {
+        if (s.error) { stage.classList.remove('is-live'); return; }
+        if (s.loading) return;
+        stage.classList.add('is-live');
+        $('scenePhase').textContent = s.form === 'core' ? 'Core awakening' : 'Form complete';
+      },
+    });
+    familiar.preload(persona);
+    syncOrb();
+    summon(false);
+  }).catch(() => { $('scenePhase').textContent = 'Form complete'; });
+  addEventListener('pointermove', (event) => {
+    const r = $('dragonCanvas').getBoundingClientRect();
+    familiar?.pointer(((event.clientX - r.left) / r.width) * 2 - 1, -(((event.clientY - r.top) / r.height) * 2 - 1), true);
+  });
+  $('dragonCanvas').addEventListener('click', () => { familiar?.tap(); cue('growl'); });
+
+  for (const [buttonId, bodyClass] of [['toggleConvo', 'show-convo'], ['toggleSystems', 'show-systems']]) {
+    $(buttonId).onclick = () => {
+      const open = document.body.classList.toggle(bodyClass);
+      $(buttonId).setAttribute('aria-expanded', String(open));
+    };
+  }
+
+  const ec = $('embers'), ectx = ec.getContext('2d');
+  let motes = [];
+  function seedEmbers() {
+    ec.width = innerWidth; ec.height = innerHeight;
+    motes = Array.from({ length: Math.floor(innerWidth / 34) }, () => ({
+      x: Math.random() * ec.width, y: Math.random() * ec.height,
+      v: 8 + Math.random() * 20, drift: (Math.random() - .5) * 6,
+      r: .5 + Math.random() * 1.3, tw: Math.random() * Math.PI * 2, warm: Math.random(),
+    }));
+  }
+  addEventListener('resize', seedEmbers); seedEmbers();
+  let lastT = 0;
+  function drawEmbers(t) {
+    const dt = Math.min(.05, (t - lastT) / 1000 || .016); lastT = t;
+    ectx.clearRect(0, 0, ec.width, ec.height);
+    if (REDUCED) return;
+    for (const m of motes) {
+      m.y -= m.v * dt; m.x += m.drift * dt;
+      if (m.y < -4) { m.y = ec.height + 4; m.x = Math.random() * ec.width; }
+      const a = .06 + .1 * Math.abs(Math.sin(t / 1600 + m.tw));
+      const theme = document.documentElement.dataset.persona;
+      const [hi, lo] = theme === 'aeri' ? ['255,214,190', '255,70,52'] : theme === 'violet' ? ['232,210,255', '150,70,255'] : ['180,236,255', '52,162,255'];
+      ectx.fillStyle = `rgba(${m.warm > .8 ? hi : lo},${a})`;
+      ectx.fillRect(m.x, m.y, m.r, m.r * 2);
+    }
+  }
+  (function loop(t) { drawEmbers(t || 0); requestAnimationFrame(loop); })();
+
+  const orb = AeryxOrb.attach($('core'), 88, { state: 'offline', lite: true });
+  const LABELS = {
+    offline: 'offline', idle: 'standing by', listening: 'listening',
+    working: 'working', awaiting: 'awaiting your word', manifest: 'manifest',
+  };
+  let brainState = 'offline', pendingCount = 0, speaking = false;
+  function syncOrb() {
+    const state =
+      pendingCount > 0 ? 'awaiting'
+      : brainState === 'offline' ? 'offline'
+      : speaking || brainState === 'listening' ? 'listening'
+      : brainState === 'thinking' || brainState === 'executing' ? 'working'
+      : 'idle';
+    orb.set(state);
+    $('coreState').textContent = LABELS[state];
+    familiar?.setActivity(state);
+    familiar?.speak(speaking);
+  }
+  function setCoreState(s) { brainState = s; syncOrb(); }
+
+  setInterval(() => {
+    const now = new Date();
+    $('clock').textContent = now.toTimeString().slice(0, 5) + ' · ' + now.toDateString().slice(0, 10);
+  }, 1000);
+
+  function addRow(cls, text) {
+    document.body.classList.add('show-convo');
+    $('toggleConvo').setAttribute('aria-expanded', 'true');
+    const div = document.createElement('div');
+    div.className = 'row ' + cls;
+    div.innerHTML = '<span class="t">' + new Date().toLocaleTimeString() + '</span>' + esc(text);
+    $('log').appendChild(div);
+    while ($('log').children.length > 120) $('log').firstChild.remove();
+    $('log').scrollTop = $('log').scrollHeight;
+  }
+
+  let voiceOn = true, nowPlaying = null;
+  const clipQueue = [];
+  const audioDone = () => {
+    clipQueue.length = 0;
+    nowPlaying = null;
+    speaking = false; syncOrb();
+    post('/audio-done', {});
+  };
+  async function playNext() {
+    const id = clipQueue.shift();
+    if (id === undefined) { nowPlaying = null; speaking = false; syncOrb(); return; }
+    try {
+      nowPlaying = new Audio('/audio/' + id);
+      const next = () => { post('/audio-done', { id }); playNext(); };
+      nowPlaying.onended = next;
+      nowPlaying.onerror = next;
+      speaking = true; syncOrb();
+      await nowPlaying.play();
+    } catch { post('/audio-done', { id }); playNext(); }
+  }
+  function playClip(id) {
+    if (!voiceOn) { post('/audio-done', { id }); return; }
+    clipQueue.push(id);
+    if (!nowPlaying) playNext();
+  }
+
+  async function refreshStatus() {
+    try {
+      if (location.protocol === 'file:') throw new Error('visual preview');
+      const response = await fetch('/status');
+      if (!response.ok) throw new Error('daemon unavailable');
+      const s = await response.json();
+      $('askText').disabled = false;
+      $('askbar').querySelector('button').disabled = false;
+      $('askText').placeholder = 'Ask Aeryx…';
+      $('brain').textContent = s.brain;
+      $('brain').className = s.brain === 'offline' ? 'warn' : 'ok';
+      $('model').textContent = s.model ?? '—';
+      $('chain').textContent = s.chainIntact === null ? 'no data' : s.chainIntact ? 'intact' : 'BROKEN';
+      $('chain').className = s.chainIntact === false ? 'bad' : 'ok';
+      if (s.micMode) $('micMode').value = s.micMode;
+      brainState = s.brain === 'offline' ? 'offline' : s.brain;
+      renderConfirms(s.pendingConfirms);
+    } catch {
+      brainState = 'offline'; pendingCount = 0; syncOrb();
+      $('askText').disabled = true;
+      $('askbar').querySelector('button').disabled = true;
+      $('askText').placeholder = 'Visual preview • connect the daemon to talk to Aeryx';
+    }
+  }
+
+  function renderConfirms(list) {
+    pendingCount = list.length;
+    document.body.classList.toggle('has-approvals', pendingCount > 0);
+    syncOrb();
+    const box = $('confirms');
+    if (!list.length) { box.innerHTML = '<span style="color:var(--ash)">nothing pending</span>'; return; }
+    box.innerHTML = '';
+    for (const { id, question } of list) {
+      const div = document.createElement('div');
+      div.className = 'confirm';
+      div.innerHTML = '<div class="q">' + esc(question) + '</div>';
+      const yes = document.createElement('button'); yes.className = 'yes'; yes.textContent = 'approve';
+      const no = document.createElement('button'); no.className = 'no'; no.textContent = 'deny';
+      yes.onclick = () => post('/confirm', { id, approve: true }).then(refreshStatus);
+      no.onclick = () => post('/confirm', { id, approve: false }).then(refreshStatus);
+      const btns = document.createElement('div'); btns.append(yes, no);
+      div.appendChild(btns);
+      box.appendChild(div);
+    }
+  }
+
+  async function refreshAudit() {
+    try {
+      const { rows } = await (await fetch('/audit?limit=9')).json();
+      $('auditRows').innerHTML = rows.slice().reverse().map((r) =>
+        '<div class="v-' + esc(String(r.verdict).split(':')[0]) + '">#' + r.id + ' ' + esc(r.tool) + ' → ' + esc(r.verdict) +
+        ' · ' + esc(String(r.detail ?? '').slice(0, 34)) + '</div>'
+      ).join('');
+    } catch { }
+  }
+
+  const es = location.protocol === 'file:' ? null : new EventSource('/events');
+  if (es) es.onmessage = (e) => {
+    let m; try { m = JSON.parse(e.data); } catch { return; }
+    switch (m.type) {
+      case 'speak': playClip(m.id); break;
+      case 'stop-audio': if (nowPlaying) nowPlaying.pause(); audioDone(); break;
+      case 'say': addRow('say', m.text); break;
+      case 'transcript': addRow('user', '🎙 ' + m.text); break;
+      case 'blocked': addRow('blocked', 'BLOCKED ' + m.tool + ' — ' + m.reason); break;
+      case 'info': addRow('info', m.text); break;
+      case 'error': addRow('blocked', m.message); break;
+      case 'tool': addRow('info', '▸ ' + m.name + (m.detail ? ' ' + m.detail : '')); break;
+      case 'state': setCoreState(m.state); break;
+      case 'listening': setCoreState('listening'); break;
+      case 'workflow-run':
+        if (m.outcome && m.outcome !== 'started') {
+          addRow(m.outcome === 'ok' ? 'info' : 'blocked',
+                 'workflow ' + (m.name ? '"' + m.name + '" ' : '') + m.outcome + (m.detail ? ' — ' + String(m.detail).slice(0, 80) : ''));
+        }
+        break;
+      case 'ready': refreshStatus(); break;
+      case 'mic': $('micMode').value = m.mode; break;
+      case 'confirm': refreshStatus(); break;
+    }
+    if (['say', 'blocked', 'confirm', 'state'].includes(m.type)) refreshAudit();
+  };
+
+  $('askbar').onsubmit = (e) => {
+    e.preventDefault();
+    const text = $('askText').value.trim();
+    if (!text) return;
+    addRow('user', text);
+    post('/ask', { text });
+    $('askText').value = '';
+  };
+  $('pttBtn').onclick = () => post('/listen', {});
+  addEventListener('keydown', (e) => { if (e.key === 'F8') { e.preventDefault(); post('/listen', {}); } });
+  $('micMode').onchange = () => post('/mic', { mode: $('micMode').value });
+  $('voiceToggle').onclick = () => {
+    voiceOn = !voiceOn;
+    $('voiceToggle').textContent = voiceOn ? '🔊' : '🔇';
+  };
+
+  refreshStatus(); refreshAudit();
+  setInterval(refreshStatus, 5000);
+</script>
+</body>
+</html>
