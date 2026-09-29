@@ -10,7 +10,7 @@
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "0.180.0"
+    "three": "0.186.1"
   },
   "license": "AGPL-3.0-only"
 }
