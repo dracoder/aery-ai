@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aeryx — Privacy</title>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="doc">
+  <p class="kicker"><a href="./">← AERYX</a></p>
+  <h1>Privacy</h1>
+
+  <h2>This website</h2>
+  <p>The site sets no cookies and runs no analytics. It is hosted on GitHub Pages, which keeps its own server logs under <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+  <p>If you join the release list, your email address is sent through FormSubmit to the project maintainer. It is used for one purpose: to tell you when a new release ships. It is not sold or shared. To be removed, reply to any email from the list.</p>
+
+  <h2>The Aeryx software</h2>
+  <ul>
+    <li>Aeryx runs on your computer. It has no server of its own, and it sends no telemetry and no crash reports.</li>
+    <li>What you ask goes to the model provider you choose: a local Ollama model (your asks stay on your machine), Anthropic, or OpenRouter. That provider's privacy terms apply to those requests.</li>
+    <li>The news panel fetches public RSS feeds. Web tools fetch the pages they need.</li>
+    <li>Spoken replies use Microsoft Edge's online text-to-speech, so the text being spoken is sent to Microsoft. Turn it off with <code>"ttsEnabled": false</code>.</li>
+    <li>Your conversations, memory, audit log and settings stay on your disk. Model keys are kept out of aeryx.config.json: in the macOS Keychain, encrypted with Windows DPAPI, or on Linux in a 0600 file under secrets/.</li>
+  </ul>
+
+  <h2>Licence</h2>
+  <p>The software is provided under the <a href="https://github.com/dracoder/aery-ai/blob/main/LICENSE">GNU AGPL-3.0</a>, without warranty.</p>
+</main>
+</body>
+</html>

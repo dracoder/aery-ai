@@ -1,0 +1,40 @@
+{
+  "name": "aeryx",
+  "version": "0.1.0",
+  "description": "Aeryx — personal AI daemon with a chain it can never break",
+  "license": "AGPL-3.0-only",
+  "private": true,
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/test-invariants.mjs",
+    "gate": "npm run typecheck && npm test",
+    "daemon": "npm run build && node dist/aeryxd.mjs",
+    "shell": "node scripts/pack-app.mjs && tauri dev",
+    "shell:build": "node scripts/pack-app.mjs && tauri build",
+    "app:build": "node scripts/pack-app.mjs && tauri build",
+    "restore": "node scripts/restore.mjs",
+    "build:warden": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-warden.ps1",
+    "test:tts": "node scripts/test-tts-live.mjs",
+    "setup-voice": "node scripts/setup-voice.mjs",
+    "build:lair": "cd lair && npm run build && cd .. && node scripts/copy-lair.mjs"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^20.11.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.220",
+    "@picovoice/porcupine-node": "^4.0.2",
+    "@picovoice/pvrecorder-node": "^1.2.9",
+    "better-sqlite3": "^11.10.0",
+    "msedge-tts": "^2.0.7",
+    "zod": "^4.4.3"
+  }
+}

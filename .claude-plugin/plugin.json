@@ -1,0 +1,5 @@
+{
+  "name": "aeryx",
+  "version": "1.0.0",
+  "description": "Aeryx's own skill library. Loaded by the brain as a LOCAL plugin so skills are discovered by description and their bodies read on demand, instead of being pasted into the system prompt on every session. The repo root is the plugin root: skills/ is the library. There is deliberately no hooks/ directory here — a hook runs a shell command the Chain never classifies, and src/brain/session.ts pins its absence."
+}

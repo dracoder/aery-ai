@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feedback and ideas
+    url: https://github.com/dracoder/aery-ai/discussions/categories/ideas
+    about: Tell us what you think, what's missing, or what felt off.
+  - name: Questions
+    url: https://github.com/dracoder/aery-ai/discussions/categories/q-a
+    about: Ask how something works.

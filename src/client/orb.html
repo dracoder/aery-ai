@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{var s=localStorage,t=s.getItem('aeryx.theme')||s.getItem('aeryx.persona');if(t==='aeri'||t==='violet')document.documentElement.dataset.persona=t}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aeryx orb</title>
+<style id="persona-palette">
+:root {
+  --c-05080f: 5 8 15;
+  --c-7fe3ff: 127 227 255;
+  --c-eafcff: 234 252 255;
+}
+:root[data-persona="aeri"] {
+  --c-05080f: 12 5 6;
+  --c-7fe3ff: 255 148 127;
+  --c-eafcff: 250 241 239;
+}
+:root[data-persona="violet"] {
+  --c-05080f: 9 5 12;
+  --c-7fe3ff: 175 127 255;
+  --c-eafcff: 243 239 250;
+}
+</style>
+<style>
+  :root { --amber: #ffd166; --ink: rgb(var(--c-05080f)); --ice: rgb(var(--c-eafcff)); }
+  html, body { margin: 0; width: 100%; height: 100%; background: transparent; overflow: hidden; user-select: none; -webkit-user-select: none; }
+  body { display: grid; place-items: center; cursor: grab; font: 600 11px system-ui, sans-serif; }
+  body.dragging { cursor: grabbing; }
+  #wrap { position: relative; width: 128px; height: 128px; }
+  canvas { display: block; pointer-events: none; position: relative; transition: transform .25s ease; }
+  #wrap::before {
+    content: ""; position: absolute; inset: 16px; border-radius: 50%; pointer-events: none;
+    box-shadow: 0 0 24px 8px rgb(var(--c-7fe3ff) / .75), inset 0 0 20px rgb(var(--c-7fe3ff) / .45);
+    opacity: 0; transition: opacity .25s ease;
+  }
+  body:hover #wrap::before { opacity: 1; }
+  body:hover canvas { transform: scale(1.04); }
+  body.asking #wrap::before { box-shadow: 0 0 24px 8px rgba(255, 209, 102, .75), inset 0 0 20px rgba(255, 209, 102, .45); }
+  @media (prefers-reduced-motion: reduce) { #wrap::before, canvas { transition: none; } body:hover canvas { transform: none; } }
+  #badge {
+    position: absolute; top: 10px; right: 10px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box;
+    border-radius: 10px; background: var(--amber); color: var(--ink); display: none; place-items: center;
+    box-shadow: 0 0 12px rgba(255, 209, 102, .8); pointer-events: none;
+  }
+  body.asking #badge { display: grid; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="orb"></canvas><span id="badge"></span></div>
+<script src="./orb.js"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const orb = AeryxOrb.attach($('orb'), 128, { state: 'offline', lite: true });
+  const LABELS = { offline: 'offline', idle: 'standing by', listening: 'listening', working: 'working', awaiting: 'awaiting your word' };
+  let brainState = 'offline', pending = 0, lastSaid = '';
+
+  function sync() {
+    const state = pending > 0 ? 'awaiting'
+      : brainState === 'offline' || brainState === 'needs-setup' ? 'offline'
+      : brainState === 'listening' ? 'listening'
+      : brainState === 'thinking' || brainState === 'executing' ? 'working'
+      : 'idle';
+    orb.set(state);
+    document.body.classList.toggle('asking', pending > 0);
+    $('badge').textContent = pending > 9 ? '9+' : String(pending);
+    const ask = pending ? ` · ${pending} waiting for you` : '';
+    document.title = `Aeryx: ${LABELS[state]}${ask}`;
+    document.body.title = `Aeryx: ${LABELS[state]}${ask}${lastSaid ? `\n“${lastSaid}”` : ''}\nclick to open · double-click to ask · drag to move · right-click for more`;
+  }
+
+  async function refresh() {
+    try {
+      const s = await (await fetch('/status')).json();
+      brainState = s.brain;
+      pending = Array.isArray(s.pendingConfirms) ? s.pendingConfirms.length : 0;
+    } catch {
+      brainState = 'offline'; pending = 0;
+    }
+    sync();
+  }
+
+  const es = new EventSource('/events');
+  es.onmessage = (e) => {
+    let m; try { m = JSON.parse(e.data); } catch { return; }
+    if (m.type === 'state') { brainState = m.state; sync(); }
+    else if (m.type === 'listening') { brainState = 'listening'; sync(); }
+    else if (m.type === 'say' && typeof m.text === 'string') { lastSaid = m.text.replace(/\s+/g, ' ').slice(0, 90); sync(); }
+    else if (m.type === 'confirm' || m.type === 'ready') refresh();
+  };
+  es.onerror = () => { brainState = 'offline'; sync(); };
+
+  const tauri = window.__TAURI_INTERNALS__;
+  let down = null;
+  addEventListener('pointerdown', (e) => {
+    document.body.classList.remove('dragging');
+    if (e.button !== 0) return;
+    down = { x: e.screenX, y: e.screenY, t: performance.now(), dragging: false };
+  });
+  addEventListener('pointermove', (e) => {
+    if (!down || down.dragging || !(e.buttons & 1)) return;
+    if (Math.hypot(e.screenX - down.x, e.screenY - down.y) < 5) return;
+    down.dragging = true;
+    document.body.classList.add('dragging');
+    tauri?.invoke('plugin:window|start_dragging', { label: 'orb' }).catch(() => {});
+  });
+  let clickTimer = null;
+  addEventListener('pointerup', () => {
+    const d = down; down = null;
+    document.body.classList.remove('dragging');
+    if (!d || d.dragging || performance.now() - d.t >= 400) return;
+    if (clickTimer) {
+      clearTimeout(clickTimer); clickTimer = null;
+      if (tauri) location.assign('/orb/ask');
+      return;
+    }
+    clickTimer = setTimeout(() => { clickTimer = null; location.assign('/lair/'); }, 260);
+  });
+  addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    if (tauri) location.assign('/orb/menu');
+  });
+
+  refresh();
+  setInterval(refresh, 4000);
+</script>
+</body>
+</html>

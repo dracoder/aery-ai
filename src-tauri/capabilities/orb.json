@@ -1,0 +1,8 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "orb-drag",
+  "description": "The floating orb may drag its own window. No other window and no other command gets IPC.",
+  "windows": ["orb"],
+  "remote": { "urls": ["http://127.0.0.1:23799/orb"] },
+  "permissions": ["core:window:allow-start-dragging"]
+}

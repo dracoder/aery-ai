@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{var s=localStorage,t=s.getItem('aeryx.theme')||s.getItem('aeryx.persona');if(t==='aeri'||t==='violet')document.documentElement.dataset.persona=t}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aeryxd — status</title>
+<link rel="icon" href="/assets/aeryx-mark.svg" type="image/svg+xml">
+<style id="persona-palette">
+:root {
+  --c-020917: 2 9 23;
+  --c-030c1d: 3 12 29;
+  --c-041129: 4 17 41;
+  --c-050b1b: 5 11 27;
+  --c-071b3b: 7 27 59;
+  --c-091b37: 9 27 55;
+  --c-0c1b33: 12 27 51;
+  --c-0c264b: 12 38 75;
+  --c-164a98: 22 74 152;
+  --c-1b59b5: 27 89 181;
+  --c-1b9fff: 27 159 255;
+  --c-2293ed: 34 147 237;
+  --c-2497e7: 36 151 231;
+  --c-285181: 40 81 129;
+  --c-52a3e4: 82 163 228;
+  --c-63dcff: 99 220 255;
+  --c-6686a3: 102 134 163;
+  --c-91b0c8: 145 176 200;
+  --c-94e8ff: 148 232 255;
+  --c-a3c3d8: 163 195 216;
+  --c-a9c9dd: 169 201 221;
+  --c-dbfaff: 219 250 255;
+  --c-dcf8ff: 220 248 255;
+  --c-e0f1ff: 224 241 255;
+  --c-e0f5ff: 224 245 255;
+  --c-eafaff: 234 250 255;
+}
+:root[data-persona="aeri"] {
+  --c-020917: 18 4 5;
+  --c-030c1d: 23 5 7;
+  --c-041129: 33 7 9;
+  --c-050b1b: 22 6 8;
+  --c-071b3b: 47 11 14;
+  --c-091b37: 44 12 15;
+  --c-0c1b33: 41 14 16;
+  --c-0c264b: 60 16 19;
+  --c-164a98: 156 18 29;
+  --c-1b59b5: 186 22 35;
+  --c-1b9fff: 255 31 27;
+  --c-2293ed: 243 29 28;
+  --c-2497e7: 237 35 30;
+  --c-285181: 132 37 42;
+  --c-52a3e4: 232 78 78;
+  --c-63dcff: 255 124 99;
+  --c-6686a3: 165 100 101;
+  --c-91b0c8: 202 144 143;
+  --c-94e8ff: 255 166 148;
+  --c-a3c3d8: 218 163 161;
+  --c-a9c9dd: 223 169 167;
+  --c-dbfaff: 247 232 227;
+  --c-dcf8ff: 247 231 228;
+  --c-e0f1ff: 248 231 231;
+  --c-e0f5ff: 248 232 231;
+  --c-eafaff: 250 240 239;
+}
+:root[data-persona="violet"] {
+  --c-020917: 12 4 18;
+  --c-030c1d: 15 5 23;
+  --c-041129: 21 7 33;
+  --c-050b1b: 16 6 22;
+  --c-071b3b: 31 11 47;
+  --c-091b37: 30 12 44;
+  --c-0c1b33: 29 14 41;
+  --c-0c264b: 40 16 60;
+  --c-164a98: 93 18 156;
+  --c-1b59b5: 111 22 186;
+  --c-1b9fff: 134 27 255;
+  --c-2293ed: 131 28 243;
+  --c-2497e7: 127 30 237;
+  --c-285181: 87 37 132;
+  --c-52a3e4: 152 78 232;
+  --c-63dcff: 158 99 255;
+  --c-6686a3: 132 100 165;
+  --c-91b0c8: 171 143 202;
+  --c-94e8ff: 188 148 255;
+  --c-a3c3d8: 187 161 218;
+  --c-a9c9dd: 193 167 223;
+  --c-dbfaff: 234 227 247;
+  --c-dcf8ff: 235 228 247;
+  --c-e0f1ff: 239 231 248;
+  --c-e0f5ff: 238 231 248;
+  --c-eafaff: 243 239 250;
+}
+</style>
+<style>
+  @font-face { font-family: "Orbitron"; font-weight: 500 900; font-display: swap; src: url(/fonts/orbitron-latin-var.woff2) format("woff2"); }
+  @font-face { font-family: "Rajdhani"; font-weight: 400; font-display: swap; src: url(/fonts/rajdhani-latin-400.woff2) format("woff2"); }
+  @font-face { font-family: "Rajdhani"; font-weight: 600; font-display: swap; src: url(/fonts/rajdhani-latin-600.woff2) format("woff2"); }
+  :root {
+    color-scheme: dark;
+    --void: rgb(var(--c-050b1b)); --scale: rgb(var(--c-0c1b33));
+    --ember-lo: rgb(var(--c-164a98)); --ember-hi: rgb(var(--c-1b9fff));
+    --gold: rgb(var(--c-63dcff)); --heat: rgb(var(--c-dcf8ff)); --ash: rgb(var(--c-6686a3)); --jade: #5ce8d3;
+    --line: rgb(var(--c-6686a3) / .26); --text: rgb(var(--c-e0f1ff)); --red: #ff5040;
+    --disp: "Orbitron", ui-sans-serif, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 22px clamp(12px,3vw,36px) 60px; min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 78% 0,rgb(var(--c-1b59b5) / .22),transparent 43%),
+      linear-gradient(90deg,rgb(var(--c-020917) / .8),rgb(var(--c-030c1d) / .58) 55%,rgb(var(--c-020917) / .72)),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="56" height="97"><path d="M28 0l24 14v28L28 56 4 42V14zM28 56l24 14v27H4V70z" fill="none" stroke="%2363dcff" stroke-opacity=".1" stroke-width="1"/></svg>') repeat,
+      url('/assets/aeryx-city-backdrop.webp') center center / cover fixed no-repeat,
+      var(--void);
+    color: var(--text);
+    font: 14px/1.5 ui-monospace, 'Cascadia Code', Consolas, monospace;
+  }
+  #statusTop { max-width: 1120px; margin: 0 auto 24px; display: flex; align-items: center; gap: 18px; padding-bottom: 16px; border-bottom: 1px solid rgb(var(--c-63dcff) / .25); }
+  #statusTop .brand { color: var(--gold); font: 600 18px var(--disp); letter-spacing: .25em; }
+  #statusTop .subtitle { color: rgb(var(--c-a9c9dd)); font: 600 11px "Rajdhani",sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+  #statusTop nav { display: flex; gap: 7px; margin-left: auto; }
+  #statusTop a { color: rgb(var(--c-e0f5ff)); padding: 7px 10px; text-decoration: none; font: 600 11px "Rajdhani",sans-serif; letter-spacing: .1em; text-transform: uppercase; border: 1px solid rgb(var(--c-63dcff) / .28); border-radius: 6px; background: rgb(var(--c-071b3b) / .68); }
+  #statusTop a:hover { border-color: var(--gold); }
+  #statusStyles { display: flex; gap: 3px; padding: 3px; border: 1px solid rgb(var(--c-63dcff) / .28); border-radius: 7px; }
+  #statusStyles button { border: 0; padding: 5px 8px; background: transparent; color: rgb(var(--c-a3c3d8)); }
+  #statusStyles button[aria-pressed="true"] { color: white; background: rgb(var(--c-2497e7) / .28); }
+  main { max-width: 1120px; margin: 0 auto; display: grid; gap: 16px; }
+  h1 {
+    font-family: var(--disp); font-size: 15px; margin: 0; letter-spacing: .3em;
+    color: var(--gold); font-weight: 700;
+  }
+  h1 small { font-family: inherit; letter-spacing: .1em; font-weight: 400; }
+  section {
+    background: linear-gradient(127deg,rgb(var(--c-52a3e4) / .13),transparent 27%),linear-gradient(145deg,rgb(var(--c-0c264b) / .87),rgb(var(--c-041129) / .86)); border: 1px solid rgb(var(--c-63dcff) / .32); border-top-color: rgb(var(--c-94e8ff) / .5); border-radius: 12px;
+    padding: 18px 20px; box-shadow: inset 0 1px 0 rgb(var(--c-dbfaff) / .2),0 18px 39px rgba(0,0,0,.3),0 0 24px rgb(var(--c-2293ed) / .06); backdrop-filter: blur(18px) saturate(1.2);
+  }
+  h2 {
+    font-family: var(--disp); font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 10px; font-weight: 600;
+  }
+  h2::before { content: '◆ '; color: var(--ember-hi); }
+  .kv { display: grid; grid-template-columns: 140px 1fr; gap: 4px 12px; }
+  .kv dt { color: var(--ash); } .kv dd { margin: 0; }
+  .ok { color: var(--jade); } .bad { color: var(--red); } .warn { color: var(--gold); }
+  #daemonGrid { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+  #daemonGrid .kv { flex: 1; min-width: 260px; }
+  #log { max-height: 320px; overflow-y: auto; display: grid; gap: 6px; }
+  .row { padding: 6px 10px; border-radius: 6px; background: rgb(var(--c-050b1b) / .7); border-left: 3px solid var(--line); word-break: break-word; }
+  .row.say { border-left-color: var(--gold); }
+  .row.user { border-left-color: var(--jade); }
+  .row.blocked { border-left-color: var(--red); }
+  .row.info { border-left-color: rgb(var(--c-285181)); color: rgb(var(--c-91b0c8)); }
+  .row .t { color: var(--ash); font-size: 11px; margin-right: 8px; }
+  .confirm {
+    background: rgb(var(--c-63dcff) / .06); border: 1px solid rgb(var(--c-63dcff) / .45);
+    border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; margin-bottom: 8px;
+  }
+  .confirm .q { color: var(--heat); }
+  button {
+    font: inherit; padding: 6px 14px; border-radius: 6px; cursor: pointer;
+    background: rgb(var(--c-091b37) / .85); color: var(--text); border: 1px solid var(--line);
+  }
+  button:hover { border-color: var(--gold); }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  select {
+    font: inherit; padding: 6px 34px 6px 14px; border-radius: 6px; cursor: pointer;
+    letter-spacing: .06em;
+    appearance: none; -webkit-appearance: none;
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M1 1l4 4 4-4" fill="none" stroke="%2363dcff" stroke-width="1.5" stroke-linecap="round"/></svg>') no-repeat right 12px center,
+      rgb(var(--c-091b37) / .85);
+    color: var(--text); border: 1px solid var(--line);
+  }
+  select:hover, select:focus { border-color: var(--gold); outline: none; }
+  select option { background: var(--scale); color: var(--text); }
+  button.yes { border-color: rgba(41,193,122,.5); color: var(--jade); }
+  button.no { border-color: rgba(255,80,64,.5); color: var(--red); }
+  button.sm { padding: 2px 10px; font-size: 12px; }
+  form.ask { display: flex; gap: 8px; }
+  input[type=text] {
+    flex: 1; font: inherit; padding: 8px 12px; border-radius: 6px;
+    background: rgb(var(--c-050b1b) / .8); color: rgb(var(--c-eafaff)); border: 1px solid var(--line); outline: none;
+  }
+  input[type=text]:focus { border-color: var(--gold); }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--ash); font-weight: normal; letter-spacing: .08em; text-transform: uppercase; font-size: 10px; }
+  td.v-denied, td.v-rejected { color: var(--red); }
+  td.v-confirmed, td.v-auto { color: var(--jade); }
+  .pill { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; border: 1px solid; white-space: nowrap; }
+  .pill.active { color: var(--jade); border-color: rgba(41,193,122,.5); }
+  .pill.paused, .pill.retired { color: var(--ash); border-color: var(--line); }
+  .pill.proposed { color: var(--gold); border-color: rgb(var(--c-63dcff) / .5); }
+  .k { font-size: 10px; letter-spacing: .06em; padding: 0 5px; border-radius: 3px; }
+  .k-workflow { color: var(--gold); background: rgb(var(--c-63dcff) / .1); }
+  .k-agent { color: var(--ember-hi); background: rgb(var(--c-1b9fff) / .12); }
+  .k-ladder { color: var(--ash); background: rgb(var(--c-6686a3) / .14); }
+  .k-tool { color: var(--text); background: rgb(var(--c-63dcff) / .08); }
+  tr.opsrow { cursor: pointer; }
+  .opsdetail td { color: rgb(var(--c-91b0c8)); font-size: 11px; word-break: break-all; background: rgb(var(--c-050b1b) / .5); }
+  .wfmeta { color: var(--ash); font-size: 11px; }
+  .wfname { font-weight: 600; cursor: pointer; }
+  .runs { color: rgb(var(--c-91b0c8)); font-size: 11px; padding: 4px 0 4px 12px; border-left: 2px solid var(--line); margin: 4px 0; }
+  .runs .r-ok { color: var(--jade); } .runs .r-failed, .runs .r-timeout { color: var(--red); } .runs .r-skipped { color: var(--gold); }
+  #wfForm { display: grid; grid-template-columns: 1fr 140px; gap: 8px; margin-top: 10px; }
+  #wfForm input[name=prompt] { grid-column: 1 / -1; }
+  #wfForm .hint { grid-column: 1 / -1; color: var(--ash); font-size: 11px; }
+  @media (max-width: 700px) {
+    #statusTop { flex-wrap: wrap; gap: 10px; }
+    #statusTop .subtitle { display: none; }
+    #statusTop nav { order: 3; width: 100%; justify-content: space-between; }
+    #statusStyles { margin-left: auto; }
+    body { padding: 14px 10px; }
+    .kv { grid-template-columns: 96px 1fr; }
+    #daemonGrid .kv { min-width: 0; }
+    section { overflow-x: auto; }
+    #wfForm { grid-template-columns: 1fr; }
+  }
+  :root[data-persona="aeri"] body { background-color: #3a060c; background-blend-mode: normal, normal, normal, luminosity; }
+</style>
+</head>
+<body>
+<header id="statusTop"><span class="brand">AERYX</span><span class="subtitle">System console</span><nav aria-label="Aeryx navigation"><a href="/hud">Dragon</a><a href="/lair">Lair</a><a href="/lens">Lens</a></nav><div id="statusStyles" role="group" aria-label="Persona"><button type="button" data-style="aeryx" aria-pressed="true">Aeryx</button><button type="button" data-style="aeri" aria-pressed="false">Aeri</button></div></header>
+<main>
+  <h1>SYSTEM STATUS <small id="conn" class="bad">connecting…</small></h1>
+
+  <section>
+    <h2>Daemon</h2>
+    <div id="daemonGrid">
+      <canvas id="mini"></canvas>
+      <dl class="kv">
+        <dt>brain</dt><dd id="brain">—</dd>
+        <dt>model</dt><dd id="model">—</dd>
+        <dt>session</dt><dd id="session">—</dd>
+        <dt>audit chain</dt><dd id="chain">—</dd>
+        <dt>uptime</dt><dd id="uptime">—</dd>
+        <dt>mic</dt><dd id="mic">—</dd>
+      </dl>
+    </div>
+    <div style="margin-top:10px; display:flex; gap:8px; align-items:center">
+      <button id="pttBtn" title="push to talk">🎙 listen</button>
+      <select id="micMode">
+        <option value="ptt">push-to-talk</option>
+        <option value="wake">wake word</option>
+        <option value="always">open mic</option>
+        <option value="off">mic off</option>
+      </select>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Chain — approvals</h2>
+    <div id="confirms"><span style="color:var(--ash)">nothing pending</span></div>
+  </section>
+
+  <section>
+    <h2>Workflows</h2>
+    <table>
+      <thead><tr><th>workflow</th><th>schedule</th><th>last / next</th><th>status</th><th></th></tr></thead>
+      <tbody id="wfRows"><tr><td colspan="5" style="color:var(--ash)">none yet — create one below or ask Aeryx for something recurring</td></tr></tbody>
+    </table>
+    <form id="wfForm">
+      <input type="text" name="name" placeholder="name — e.g. morning briefing" autocomplete="off">
+      <input type="text" name="schedule" placeholder="daily@08:00" autocomplete="off">
+      <input type="text" name="prompt" placeholder="what should Aeryx do on this schedule?" autocomplete="off">
+      <span class="hint">schedule: manual · every 15m / 2h · daily@08:00 · weekdays@ · weekends@ · weekly@mon 09:00 · monthly@1 09:00 — created by you, so it starts active</span>
+      <button type="submit" style="grid-column: 1 / -1; justify-self: start">create workflow</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Agents — permanent roster</h2>
+    <table>
+      <thead><tr><th>agent</th><th>tools</th><th>status</th><th></th></tr></thead>
+      <tbody id="agRows"><tr><td colspan="4" style="color:var(--ash)">no permanent agents — wyrmlings (one-off subagents) need no roster</td></tr></tbody>
+    </table>
+    <form id="agForm" style="display:grid; grid-template-columns: 180px 1fr; gap: 8px; margin-top: 10px">
+      <input type="text" name="slug" placeholder="slug — e.g. inbox-triager" autocomplete="off">
+      <input type="text" name="description" placeholder="when should Aeryx reach for this agent?" autocomplete="off">
+      <input type="text" name="prompt" placeholder="the agent's system prompt" autocomplete="off" style="grid-column: 1 / -1">
+      <div style="grid-column: 1 / -1; display:flex; gap:8px; align-items:center">
+        <button type="submit">create agent</button>
+        <button type="button" id="restartBrain" title="apply roster and config changes on a fresh brain session">restart brain</button>
+        <span style="color:var(--ash); font-size:11px">roster changes apply at the next brain start</span>
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Comm link</h2>
+    <div id="log"></div>
+    <form class="ask" id="askForm" style="margin-top:10px">
+      <input type="text" id="askText" placeholder="ask Aeryx…" autocomplete="off">
+      <button type="submit">send</button>
+      <button type="button" id="voiceToggle" title="voice replies on/off">🔊</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Operations log</h2>
+    <table>
+      <thead><tr><th>#</th><th>kind</th><th>tool</th><th>lane</th><th>class</th><th>verdict</th><th>detail</th></tr></thead>
+      <tbody id="audit"></tbody>
+    </table>
+    <div style="color:var(--ash); font-size:11px; margin-top:6px">click a row for full detail — every tool call, workflow, agent lifecycle and ladder move; nothing invisible</div>
+  </section>
+</main>
+
+<script src="/orb.js"></script>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const post = (p, body) => fetch(p, { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify(body ?? {}) });
+
+  const mini = AeryxOrb.attach($('mini'), 120, { state: 'offline' });
+  const styleButtons = document.querySelectorAll('#statusStyles [data-style]');
+  function setStatusStyle(style) {
+    if (style !== 'aeryx' && style !== 'aeri') return;
+    AeryxOrb.setVisualStyle(style);
+    styleButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.style === style)));
+    try { localStorage.setItem('aeryx.persona', style); } catch { }
+  }
+  styleButtons.forEach((button) => button.addEventListener('click', () => setStatusStyle(button.dataset.style)));
+  try { if (localStorage.getItem('aeryx.persona') === 'aeri') setStatusStyle('aeri'); } catch { }
+  addEventListener('storage', (event) => { if (event.key === 'aeryx.persona' || event.key === 'aeryx.theme') setStatusStyle(event.newValue); });
+  let brainState = 'offline', pendingCount = 0;
+  function syncOrb() {
+    mini.set(
+      pendingCount > 0 ? 'awaiting'
+      : brainState === 'offline' ? 'offline'
+      : brainState === 'listening' ? 'listening'
+      : brainState === 'thinking' || brainState === 'executing' ? 'working'
+      : 'idle'
+    );
+  }
+
+  function addRow(cls, text) {
+    const div = document.createElement('div');
+    div.className = 'row ' + cls;
+    div.innerHTML = '<span class="t">' + new Date().toLocaleTimeString() + '</span>' + esc(text);
+    $('log').appendChild(div);
+    while ($('log').children.length > 150) $('log').firstChild.remove();
+    $('log').scrollTop = $('log').scrollHeight;
+  }
+
+  async function refreshStatus() {
+    try {
+      const s = await (await fetch('/status')).json();
+      $('conn').textContent = 'live'; $('conn').className = 'ok';
+      $('brain').textContent = s.brain;
+      $('brain').className = s.brain === 'offline' ? 'warn' : 'ok';
+      $('model').textContent = s.model ?? '—';
+      $('session').textContent = s.session ?? '—';
+      $('chain').textContent = s.chainIntact === null ? 'no data yet' : s.chainIntact ? 'intact' : 'BROKEN';
+      $('chain').className = s.chainIntact === false ? 'bad' : 'ok';
+      $('uptime').textContent = s.uptimeSec + 's';
+      if (s.micMode) { $('mic').textContent = s.micMode; $('micMode').value = s.micMode; }
+      brainState = s.brain === 'offline' ? 'offline' : s.brain;
+      renderConfirms(s.pendingConfirms);
+    } catch {
+      $('conn').textContent = 'daemon offline'; $('conn').className = 'bad';
+      brainState = 'offline'; syncOrb();
+    }
+  }
+
+  function renderConfirms(list) {
+    pendingCount = list.length;
+    syncOrb();
+    const box = $('confirms');
+    if (!list.length) { box.innerHTML = '<span style="color:var(--ash)">nothing pending</span>'; return; }
+    box.innerHTML = '';
+    for (const { id, question } of list) {
+      const div = document.createElement('div');
+      div.className = 'confirm';
+      div.innerHTML = '<div class="q">' + esc(question) + '</div>';
+      const yes = document.createElement('button'); yes.className = 'yes'; yes.textContent = 'approve';
+      const no = document.createElement('button'); no.className = 'no'; no.textContent = 'deny';
+      yes.onclick = () => post('/confirm', { id, approve: true }).then(refreshStatus);
+      no.onclick = () => post('/confirm', { id, approve: false }).then(refreshStatus);
+      const btns = document.createElement('div'); btns.append(yes, no);
+      div.appendChild(btns);
+      box.appendChild(div);
+    }
+  }
+
+  const fmtTs = (iso) => iso ? new Date(iso).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
+  const openRunsFor = new Set();
+
+  async function refreshWorkflows() {
+    try {
+      const { workflows } = await (await fetch('/workflows')).json();
+      const tbody = $('wfRows');
+      if (!workflows.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="color:var(--ash)">none yet — create one below or ask Aeryx for something recurring</td></tr>';
+        return;
+      }
+      tbody.innerHTML = '';
+      for (const wf of workflows) {
+        const tr = document.createElement('tr');
+        const actions = document.createElement('td');
+        const btn = (label, cls, fn) => {
+          const b = document.createElement('button');
+          b.className = 'sm ' + cls; b.textContent = label; b.onclick = fn;
+          actions.appendChild(b); actions.append(' ');
+        };
+        if (wf.status === 'proposed') btn('approve', 'yes', () => post(`/workflows/${wf.id}/approve`).then(refreshWorkflows));
+        if (wf.status === 'active') {
+          btn('run now', '', () => post(`/workflows/${wf.id}/run`).then(refreshWorkflows));
+          btn('pause', '', () => post(`/workflows/${wf.id}/pause`).then(refreshWorkflows));
+        }
+        if (wf.status === 'paused') btn('resume', 'yes', () => post(`/workflows/${wf.id}/resume`).then(refreshWorkflows));
+        btn('delete', 'no', () => {
+          if (confirm(`Delete workflow "${wf.name}" and its run history?`)) {
+            post(`/workflows/${wf.id}/delete`).then(refreshWorkflows);
+          }
+        });
+
+        const info = document.createElement('td');
+        info.innerHTML = '<div class="wfname" title="click for recent runs">' + esc(wf.name) + '</div>' +
+          (wf.purpose ? '<div class="wfmeta">' + esc(wf.purpose) + '</div>' : '');
+        info.querySelector('.wfname').onclick = () => toggleRuns(wf.id, tr);
+
+        tr.appendChild(info);
+        tr.insertAdjacentHTML('beforeend',
+          '<td>' + esc(wf.scheduleWords ?? wf.schedule) + '</td>' +
+          '<td class="wfmeta">' + (wf.lastOutcome ? esc(wf.lastOutcome) + ' · ' : '') + fmtTs(wf.lastRunTs) +
+            '<br>next ' + fmtTs(wf.nextRunTs) + '</td>' +
+          '<td><span class="pill ' + esc(wf.status) + '">' + esc(wf.status) + '</span></td>');
+        tr.appendChild(actions);
+        tbody.appendChild(tr);
+
+        if (openRunsFor.has(wf.id)) insertRunsRow(wf.id, tr);
+      }
+    } catch { }
+  }
+
+  async function insertRunsRow(id, afterTr) {
+    const { runs } = await (await fetch(`/workflows/${id}/runs?limit=6`)).json();
+    const tr = document.createElement('tr');
+    tr.dataset.runsFor = id;
+    const td = document.createElement('td');
+    td.colSpan = 5;
+    td.innerHTML = runs.length
+      ? runs.map((r) => '<div class="runs"><span class="r-' + esc(r.outcome ?? 'open') + '">' + esc(r.outcome ?? 'running…') + '</span> · ' +
+          fmtTs(r.startedTs) + ' · ' + esc(r.trigger) + (r.detail ? ' — ' + esc(String(r.detail).slice(0, 110)) : '') + '</div>').join('')
+      : '<div class="runs">no runs yet</div>';
+    tr.appendChild(td);
+    afterTr.after(tr);
+  }
+
+  function toggleRuns(id, tr) {
+    const existing = document.querySelector(`tr[data-runs-for="${id}"]`);
+    if (existing) { existing.remove(); openRunsFor.delete(id); return; }
+    openRunsFor.add(id);
+    insertRunsRow(id, tr);
+  }
+
+  $('wfForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const body = {
+      name: f.name.value.trim(), schedule: f.schedule.value.trim(),
+      prompt: f.prompt.value.trim(), purpose: '', status: 'active', source: 'ui',
+    };
+    if (!body.name || !body.schedule || !body.prompt) return;
+    const res = await post('/workflows', body);
+    if (!res.ok) {
+      const { error } = await res.json().catch(() => ({ error: 'create failed' }));
+      addRow('blocked', 'workflow create: ' + error);
+      return;
+    }
+    f.reset();
+    refreshWorkflows();
+  };
+
+  async function refreshAgents() {
+    try {
+      const { agents } = await (await fetch('/agents')).json();
+      const tbody = $('agRows');
+      if (!agents.length) {
+        tbody.innerHTML = '<tr><td colspan="4" style="color:var(--ash)">no permanent agents — wyrmlings (one-off subagents) need no roster</td></tr>';
+        return;
+      }
+      tbody.innerHTML = '';
+      for (const a of agents) {
+        const tr = document.createElement('tr');
+        let tools = 'inherit';
+        try { const t = a.tools ? JSON.parse(a.tools) : null; if (t) tools = t.length + ' tool' + (t.length === 1 ? '' : 's'); } catch {}
+        tr.innerHTML = '<td><div class="wfname" style="cursor:default">' + esc(a.slug) + '</div><div class="wfmeta">' + esc(a.description) + '</div></td>' +
+          '<td class="wfmeta">' + esc(tools) + '</td>' +
+          '<td><span class="pill ' + esc(a.status) + '">' + esc(a.status) + '</span></td>';
+        const actions = document.createElement('td');
+        const btn = (label, cls, route) => {
+          const b = document.createElement('button');
+          b.className = 'sm ' + cls; b.textContent = label;
+          b.onclick = () => post('/agents/' + a.id + '/' + route).then(refreshAgents);
+          actions.appendChild(b); actions.append(' ');
+        };
+        if (a.status === 'proposed') { btn('approve', 'yes', 'approve'); btn('reject', 'no', 'retire'); }
+        if (a.status === 'active') btn('retire', 'no', 'retire');
+        if (a.status === 'retired') btn('revive', 'yes', 'revive');
+        tr.appendChild(actions);
+        tbody.appendChild(tr);
+      }
+    } catch { }
+  }
+
+  $('agForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const body = {
+      slug: f.slug.value.trim(), description: f.description.value.trim(),
+      prompt: f.prompt.value.trim(), status: 'active', source: 'ui',
+    };
+    if (!body.slug || !body.description || !body.prompt) return;
+    const res = await post('/agents', body);
+    if (!res.ok) {
+      const { error } = await res.json().catch(() => ({ error: 'create failed' }));
+      addRow('blocked', 'agent create: ' + error);
+      return;
+    }
+    f.reset();
+    refreshAgents();
+    addRow('info', 'agent created — restart the brain to load the roster');
+  };
+
+  $('restartBrain').onclick = () => {
+    post('/brain/restart').then(() => addRow('info', 'brain restarting — roster and config re-read'));
+  };
+
+  const OPS_KINDS = ['workflow', 'agent', 'ladder'];
+  async function refreshAudit() {
+    try {
+      const { rows } = await (await fetch('/ops?limit=20')).json();
+      const tbody = $('audit');
+      tbody.innerHTML = '';
+      for (const r of rows.slice().reverse()) {
+        const kind = OPS_KINDS.includes(r.tool) ? r.tool : 'tool';
+        const tr = document.createElement('tr');
+        tr.className = 'opsrow';
+        tr.innerHTML = '<td>' + r.id + '</td><td><span class="k k-' + kind + '">' + kind + '</span></td>' +
+          '<td>' + esc(r.tool) + '</td><td>' + esc(r.lane) + '</td><td>' + r.riskClass +
+          '</td><td class="v-' + esc(String(r.verdict).split(':')[0]) + '">' + esc(r.verdict) +
+          '</td><td>' + esc(String(r.detail ?? '').slice(0, 60)) + '</td>';
+        tr.onclick = () => {
+          const open = tbody.querySelector('tr.opsdetail[data-for="' + r.id + '"]');
+          if (open) { open.remove(); return; }
+          const d = document.createElement('tr');
+          d.className = 'opsdetail'; d.dataset.for = r.id;
+          d.innerHTML = '<td colspan="7">' + esc(r.ts) + ' · lane ' + esc(r.lane) + ' · class ' + r.riskClass +
+            ' · ' + esc(r.verdict) + '<br>' + esc(String(r.detail ?? '(no detail)')) + '</td>';
+          tr.after(d);
+        };
+        tbody.appendChild(tr);
+      }
+    } catch { }
+  }
+
+  let voiceOn = true;
+  let nowPlaying = null;
+  const clipQueue = [];
+  const audioDone = () => { clipQueue.length = 0; nowPlaying = null; post('/audio-done'); };
+  async function playNext() {
+    const id = clipQueue.shift();
+    if (id === undefined) { nowPlaying = null; return; }
+    try {
+      nowPlaying = new Audio('/audio/' + id);
+      const next = () => { post('/audio-done', { id }); playNext(); };
+      nowPlaying.onended = next;
+      nowPlaying.onerror = next;
+      await nowPlaying.play();
+    } catch { post('/audio-done', { id }); playNext(); }
+  }
+  function playClip(id) {
+    if (!voiceOn) { post('/audio-done', { id }); return; }
+    clipQueue.push(id);
+    if (!nowPlaying) playNext();
+  }
+
+  const es = new EventSource('/events');
+  es.onmessage = (e) => {
+    let m; try { m = JSON.parse(e.data); } catch { return; }
+    if (m.type === 'speak') playClip(m.id);
+    if (m.type === 'stop-audio') { if (nowPlaying) nowPlaying.pause(); audioDone(); }
+    if (m.type === 'transcript') addRow('user', '🎙 ' + m.text);
+    if (m.type === 'listening') { addRow('info', 'listening…'); brainState = 'listening'; syncOrb(); }
+    if (m.type === 'voice-error') addRow('blocked', 'voice: ' + m.message);
+    if (m.type === 'mic') { $('mic').textContent = m.mode; $('micMode').value = m.mode; }
+    if (m.type === 'say') addRow('say', m.text);
+    else if (m.type === 'blocked') addRow('blocked', 'BLOCKED ' + m.tool + ' [' + m.lane + '] — ' + m.reason);
+    else if (m.type === 'info') addRow('info', m.text);
+    else if (m.type === 'error') addRow('blocked', 'error: ' + m.message);
+    else if (m.type === 'tool') addRow('info', 'tool: ' + m.name + (m.detail ? ' — ' + m.detail : ''));
+    if (m.type === 'state') { brainState = m.state; syncOrb(); }
+    if (m.type === 'workflows') refreshWorkflows();
+    if (m.type === 'agents') refreshAgents();
+    if (m.type === 'workflow-run' && m.outcome && m.outcome !== 'started') {
+      addRow(m.outcome === 'ok' ? 'info' : 'blocked',
+             'workflow ' + (m.name ? '"' + m.name + '" ' : '#' + m.id + ' ') + m.outcome + (m.detail ? ' — ' + String(m.detail).slice(0, 100) : ''));
+    }
+    if (['confirm', 'state', 'ready', 'say'].includes(m.type)) { refreshStatus(); refreshAudit(); }
+  };
+  es.onerror = () => { $('conn').textContent = 'reconnecting…'; $('conn').className = 'warn'; };
+
+  $('askForm').onsubmit = (e) => {
+    e.preventDefault();
+    const text = $('askText').value.trim();
+    if (!text) return;
+    addRow('user', text);
+    post('/ask', { text });
+    $('askText').value = '';
+  };
+
+  $('pttBtn').onclick = () => post('/listen');
+  $('micMode').onchange = () => post('/mic', { mode: $('micMode').value });
+  $('voiceToggle').onclick = () => {
+    voiceOn = !voiceOn;
+    $('voiceToggle').textContent = voiceOn ? '🔊' : '🔇';
+  };
+
+  refreshStatus(); refreshAudit(); refreshWorkflows(); refreshAgents();
+  setInterval(refreshStatus, 5000);
+  setInterval(refreshWorkflows, 30000);
+</script>
+</body>
+</html>

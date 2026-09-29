@@ -1,0 +1,57 @@
+.main { container: main / inline-size; }
+
+.overview-cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr); }
+@container main (max-width: 1080px) {
+  .overview-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .overview-cards .today-card { grid-column: 1 / -1; min-height: 0; }
+}
+@container main (max-width: 620px) {
+  .overview-cards { grid-template-columns: minmax(0, 1fr); }
+  .overview-cards .today-card { grid-column: auto; }
+  .overview-cards .card { min-height: 0; }
+}
+
+.card > h2::after { white-space: nowrap; flex-shrink: 0; }
+@container main (max-width: 700px) {
+  .card > h2::after { display: none; }
+}
+
+
+.stat-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 124px), 1fr)); }
+.stat .l { letter-spacing: .1em; }
+
+@media (max-width: 900px) {
+  .rail-dragon-style button { min-height: 36px; }
+}
+
+@media (pointer: coarse), (max-width: 700px) {
+  .globe-turn-controls button { min-height: 36px; min-width: 64px; }
+}
+
+@container main (max-width: 860px) {
+  table.table-wide, table.table-wide tbody, table.table-wide tr, table.table-wide td { display: block; width: 100%; }
+  table.table-wide thead { display: none; }
+  table.table-wide tbody tr { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; background: rgb(var(--c-081c38) / .35); }
+  table.table-wide td { border-bottom: 0; padding: 2px 0; }
+  table.table-wide td:empty { display: none; }
+  table.table-wide td[data-label]::before { content: attr(data-label); margin-right: 8px; color: var(--ash-text); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+  table.table-wide td.acts { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 8px; }
+}
+
+.globe-pin.flip { flex-direction: row-reverse; }
+.globe-pin.flip b { margin: -10px -10px 0 0; }
+
+@container main (max-width: 700px) {
+  table.opslog tbody tr.ops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
+  table.opslog tbody tr.ops td { width: auto; min-width: 0; padding-top: 2px; padding-bottom: 2px; overflow-wrap: break-word; }
+  table.opslog tbody tr.ops td:nth-child(3), table.opslog tbody tr.ops td:last-child { grid-column: 1 / -1; }
+}
+
+@container main (max-width: 860px) {
+  table.table-wide tbody td:first-child { padding-left: 0; clip-path: none; }
+  table.table-wide tbody td:first-child::before { display: none; }
+}
+@media (max-width: 700px) {
+  table:not(.opslog) tbody td:first-child { padding-left: 0; clip-path: none; }
+  table:not(.opslog) tbody td:first-child::before { display: none; }
+}

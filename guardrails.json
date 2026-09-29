@@ -1,0 +1,181 @@
+{
+  "shellTools": [
+    "Bash",
+    "PowerShell"
+  ],
+  "confirmPatterns": [
+    "\\brm\\b",
+    "\\bdel\\b",
+    "Remove-Item",
+    "\\brmdir\\b",
+    "\\brd\\b",
+    "\\bformat\\b",
+    "\\bshutdown\\b",
+    "\\brestart-computer\\b",
+    "\\bmklink\\b",
+    "\\breg\\s+(add|delete)\\b",
+    "Set-ItemProperty.*HK",
+    "\\bnetsh\\b",
+    "Send-MailMessage",
+    "\\bgit\\s+push\\b",
+    "\\bnpm\\s+publish\\b",
+    "Stop-Process",
+    "\\btaskkill\\b",
+    "Clear-RecycleBin",
+    "\\bcipher\\b",
+    "\\b23799\\b",
+    "https?://(?:localhost|127\\.|\\[::1\\]|0\\.0\\.0\\.0|100\\.|aeryx\\b)",
+    "\\bln\\s+-",
+    "\\bln\\s+\\S+\\s+\\S+",
+    "\\bprintenv\\b",
+    "(^|[;&|]\\s*)env(\\s*$|\\s*[;&|])",
+    "/proc/\\S*/environ",
+    "\\bps\\b[^|;&]*\\be",
+    "get-childitem\\s+env:",
+    "\\bgci\\s+env:",
+    "\\bls\\s+env:"
+  ],
+  "denyPatterns": [
+    "\\bformat\\s+c:",
+    "Remove-Item\\s+.*C:\\\\Windows",
+    "\\bvssadmin\\b.*delete",
+    "\\bbcdedit\\b",
+    "\\bdiskpart\\b"
+  ],
+  "selfCommandPatterns": [
+    "\\baeryx(?:\\.cmd|-cli\\.mjs)?[\"']?\\s+(?:update|uninstall|autostart|setup|restart|stop|start)\\b",
+    "\\bAERYX_(?:SOURCE|OPENROUTER_URL|DIR|RELEASE|APP|APP_DIR|UNDER_BRAIN|FFMPEG)\\b",
+    "aeryxd\\.mjs",
+    "dracoder\\.github\\.io/(?:aeryx|aery-ai)/install"
+  ],
+  "mcpRegistry": {
+    "web": {
+      "taints": true
+    },
+    "filesystem": {
+      "minClass": 2,
+      "taints": false
+    },
+    "gmail": {
+      "taints": true
+    },
+    "gdrive": {
+      "taints": true
+    },
+    "fetch": {
+      "taints": true
+    }
+  },
+  "confirmTools": [
+    "Write",
+    "Edit",
+    "NotebookEdit"
+  ],
+  "confirmOutsideDirs": [
+    "${WORKSPACE}",
+    "${AERYX}",
+    "${TEMP}"
+  ],
+  "gateDoors": [],
+  "selfPaths": [
+    "guardrails.json",
+    "aeryx.config.json",
+    "memory",
+    "src",
+    "dist",
+    "node_modules",
+    "molt/green/node_modules",
+    "build.mjs",
+    "scripts",
+    "backups",
+    "skills",
+    "agents",
+    "data",
+    ".claude-plugin",
+    "hooks",
+    "commands",
+    ".mcp.json",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "secrets",
+    "lair",
+    "src-tauri"
+  ],
+  "sensitiveReadDirs": [
+    "${AERYX}/secrets",
+    "${HOME}/.ssh",
+    "${HOME}/.aws",
+    "${HOME}/.claude",
+    "${HOME}/.gnupg",
+    "${HOME}/.config/gh",
+    "${HOME}/Library/Keychains"
+  ],
+  "sensitiveFilePatterns": [
+    "(^|[\\\\/\\s])\\.env(\\.[a-z]+)?(\\s|$)",
+    "\\.pem(\\s|$)",
+    "\\.p12(\\s|$)",
+    "[\\\\/]id_(rsa|ed25519|ecdsa)",
+    "aeryx\\.config\\.json",
+    "\\.credentials\\.json",
+    "brain-token\\.cred",
+    "warden\\.cred"
+  ],
+  "taintReadDirs": [
+    "${HOME}/Downloads",
+    "${HOME}/Desktop",
+    "${TEMP}",
+    "${AERYX}/data/sources"
+  ],
+  "taintShellPatterns": [
+    "\\bcurl\\b",
+    "\\bwget\\b",
+    "invoke-webrequest",
+    "invoke-restmethod",
+    "\\biwr\\b",
+    "\\birm\\b",
+    "\\bgit\\s+(clone|pull|fetch)\\b"
+  ],
+  "localOnlyShellPatterns": [
+    "\\bssh\\b",
+    "\\bscp\\b",
+    "\\brsync\\b",
+    "\\bsftp\\b",
+    "\\bftp\\b",
+    "\\bnc\\b",
+    "\\btelnet\\b",
+    "\\bgit\\s+(push|remote\\s+update)\\b",
+    "\\b(npm|pnpm|yarn|bun)\\s+(install|i|add|ci|publish|update|dlx|x)\\b",
+    "\\bnpx\\b",
+    "\\bpip3?\\s+(install|download)\\b",
+    "\\bbrew\\s+(install|upgrade|update)\\b",
+    "\\bwinget\\b",
+    "\\bchoco\\b",
+    "\\bInvoke-(WebRequest|RestMethod)\\b",
+    "Start-BitsTransfer",
+    "\\bSend-MailMessage\\b"
+  ],
+  "ladder": {
+    "enabled": true,
+    "streakTarget": 3,
+    "standingTarget": 8,
+    "neverPromote": [
+      "self.modify",
+      "shell.exec:*:dangerous",
+      "shell.exec:*:tainted",
+      "shell.exec:*:self",
+      "fs.write:unresolved",
+      "fs.write:*:tainted",
+      "local.*:tainted",
+      "workflow.govern",
+      "agent.govern",
+      "talon.act",
+      "talon.act:*",
+      "read.sensitive",
+      "shell.exec:*:sensitive",
+      "skill.draft:tainted",
+      "workflow.run:tainted",
+      "shell.exec:*:voice"
+    ]
+  }
+}
