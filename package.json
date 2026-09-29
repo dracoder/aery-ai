@@ -35,6 +35,6 @@
     "@picovoice/pvrecorder-node": "^1.2.9",
     "better-sqlite3": "^11.10.0",
     "msedge-tts": "^2.0.7",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   }
 }
